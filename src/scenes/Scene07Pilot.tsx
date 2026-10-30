@@ -30,7 +30,7 @@ const TokenBar: React.FC<{frame: number}> = ({frame}) => {
     <div style={{position: 'absolute', left: LEFT, top: 286, width: BAR_W}}>
       <div style={{display: 'flex', alignItems: 'baseline', gap: 18, ...fadeUp(frame, at, 24)}}>
         <span style={{fontSize: 56, fontWeight: 600}}>~3.7M</span>
-        <span style={{fontSize: type.small, color: colors.muted}}>subagent tokens, 11 rounds</span>
+        <span style={{fontSize: type.small, color: colors.muted}}>subagent tokens, 10 subagent rounds</span>
       </div>
       <div style={{position: 'relative', marginTop: 14, height: 44}}>
         <div
@@ -151,10 +151,10 @@ const NAMED = [
 ];
 
 const FindingsLog: React.FC<{frame: number}> = ({frame}) => {
-  const at = cue('and every serious bug came from');
+  const at = cue('and most of the serious bugs came from');
   return (
     <div style={{position: 'absolute', left: 1200, top: 286, width: 600, ...fadeUp(frame, at, 24)}}>
-      <Eyebrow>Serious findings</Eyebrow>
+      <Eyebrow>Top findings</Eyebrow>
       {NAMED.map((f, i) => (
         <div
           key={f.title}
@@ -225,7 +225,7 @@ export const Scene07Pilot: React.FC = () => {
         <div style={{display: 'flex', alignItems: 'baseline', gap: 28, marginTop: 6}}>
           <span style={{fontSize: type.heading, fontWeight: 600}}>WinScope, by the numbers</span>
           <span style={{fontSize: type.caption, color: colors.muted, ...fadeUp(frame, 12, 30)}}>
-            ~16,000 lines · ~33 min build · 1,051 tests passing
+            ~13,000 lines in a 33-min parallel build · 1,051 tests passing
           </span>
         </div>
       </div>

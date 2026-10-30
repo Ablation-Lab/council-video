@@ -1,6 +1,6 @@
 # Evolving Review Councils — Explainer Script (v2, approved)
 
-Narration: ElevenLabs recordings (5:57 of speech), normalised to -14 LUFS. Scene lengths and cues come from the recordings (src/voiceover.json). Total runtime 6:25. 1920×1080, 30 fps.
+Narration: ElevenLabs recordings (5:56 of speech), normalised to -14 LUFS. Scene lengths and cues come from the recordings (src/voiceover.json). Total runtime 6:25. 1920×1080, 30 fps.
 
 ## Global design
 
@@ -10,7 +10,7 @@ Narration: ElevenLabs recordings (5:57 of speech), normalised to -14 LUFS. Scene
 - **Recurring diagram, the Generation Tree:** nodes are rounded rectangles showing `G2 · 71`. Edges draw left to right. Kept = solid accent outline. Discarded = dashed grey and faded. It starts as a single node in Scene 1 and grows or changes in every scene after that.
 - **Example app:** `rename-cli`, a small command-line file renamer (small app #1 in the plan). Its scores are **illustrative**, and a small caption says so every time they appear. The only real numbers in the video come from the WinScope pilot.
 - **Chapter tag:** bottom-left, small caps, e.g. `03 / EVOLUTION`.
-- **Audio:** placeholder narration track per scene. No music cues. Room for a quiet, flat bed later if wanted.
+- **Audio:** one ElevenLabs narration track per scene. No music cues. Room for a quiet, flat bed later if wanted.
 
 ---
 
@@ -81,7 +81,7 @@ Narration: ElevenLabs recordings (5:57 of speech), normalised to -14 LUFS. Scene
 **On screen**
 1. The rename-cli tree shrinks into the first of three columns: `BASIC APP`, `SCIENTIFIC APP`, `FRONTIER RESEARCH`.
 2. Each column draws a quality-vs-size curve. The knee sits at ~6, at ~20, and off the right edge (shown with an arrow).
-3. Reviewer chips count up under each knee: 6, then 20, then a `20+ →` overflow.
+3. Reviewer chips count up under each knee: 6, then 20, then a `far more` overflow.
 4. A tag `HYPOTHESIS` stays pinned top-right for the whole scene.
 
 ---
@@ -92,7 +92,7 @@ Narration: ElevenLabs recordings (5:57 of speech), normalised to -14 LUFS. Scene
 > Only the council is allowed to change. Every run starts in a fresh chat, with no memory of earlier runs and no hint of the hoped-for result. The judge scores outputs blind, without knowing which size or model produced them. Every setup gets the same app, the same starting code and the same tests. And everything runs in a sandbox. The sandbox stops agents touching anything real. Fresh chats stop earlier context biasing the results.
 
 **On screen:** four rules attach to the tree one at a time, each with a visible effect.
-1. **Fresh chat:** a context panel beside a node empties down to `0 prior messages`.
+1. **Fresh chat:** a context panel beside a node empties down to `context: empty`.
 2. **Blind judging:** a node label `6 reviewers · Opus` flips to `run #A7`.
 3. **Same inputs:** three parallel runs are fed from one input block with the same hash `inputs: 3f9c…` on each.
 4. **Sandbox:** a border draws around the whole tree. Outside it, a greyed label reads `real system, drivers, boot settings: unreachable`.
@@ -130,20 +130,20 @@ Narration: ElevenLabs recordings (5:57 of speech), normalised to -14 LUFS. Scene
 
 ---
 
-## Scene 7 — What the WinScope pilot showed (35 s)
+## Scene 7 — What the WinScope pilot showed (34 s)
 
 **Narration**
-> The WinScope pilot was informal, but its numbers are real. About half its 3.7 million subagent tokens went on review and verification. Those rounds found 97 problems the builders' tests had passed, and every serious bug came from an agent that hadn't written the code. Verification after fixes never came back clean on its first pass.
+> The WinScope pilot was informal, but its numbers are real. About half its 3.7 million subagent tokens went on review and verification. Those rounds found 97 problems the builders' tests had passed, and most of the serious bugs came from agents that hadn't written the code. Verification after fixes never came back clean on its first pass.
 > The limits: one app, one run, Linux only, reviewers with saved memory, and a fixed council size. The formal experiment varies that.
 
 **On screen**
-Source: "How the agents built and reviewed WinScope", revision 20 (11 rounds). The figures in plan.md (3.4M tokens, 83 problems, 999 tests, 9 rounds) are from before rounds 10–11.
+Source: "How the agents built and reviewed WinScope", revision 20 (all 11 rounds).
 
-1. A quiet context strip under the title (not narrated): `~16,000 lines · ~33 min build · 1,051 tests passing · 11 rounds`.
-2. A token bar for 3.7M splits into `review + verification ≈ 1.9M` in accent and `building + fixing ≈ 1.8M` in grey.
+1. A quiet context strip under the title (not narrated): `~13,000 lines in a 33-min parallel build · 1,051 tests passing`.
+2. A token bar for 3.7M, labelled `subagent tokens, 10 subagent rounds`, splits into `review + verification ≈ 1.9M` in accent and `building + fixing ≈ 1.8M` in grey.
 3. A large `97` appears, then breaks into a stacked bar: `48 first council` / `10 first verification` / `25 privacy audit` / `14 second verification`. When the narration reaches the verification line, the two verification segments are outlined: `every verification round found more`.
-4. A findings log shows the two named findings, each tagged `found by a fresh reviewer`: `privilege escalation: admin writes to user AppData` and `Recycle Bin: wrong file affected`, followed by `+ 95 more`.
-5. A limits panel lists: one app, one run · Linux only, not yet run on Windows · reviewers inherited saved memory · council size never varied. The last item turns accent: `varied in the formal experiment`.
+4. A findings log headed `Top findings` shows the two named findings, each tagged `found by a fresh reviewer`: `privilege escalation: admin writes to user AppData` and `Recycle Bin: wrong file affected`, followed by `+ 95 more`.
+5. A limits panel lists: one app, one run · Linux only, not yet run on Windows · reviewers inherited saved memory · council size never varied. The last item turns accent: `council size → varied in the experiment`.
 6. Caption: *"Token counts are self-reported by agents."*
 
 ---

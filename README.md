@@ -1,6 +1,6 @@
 # Evolving Review Councils — explainer video
 
-An animated explainer, built with [Remotion](https://www.remotion.dev/), for the experiment described in `plan.md`. The full script is in `script.md`.
+An animated explainer, built with [Remotion](https://www.remotion.dev/), for the experiment described in the [experiment plan](https://github.com/ablation-lab/evolving-review-councils/blob/main/core-method/experiment-plan.md). The full script is in [script.md](script.md).
 
 The experiment plan, pilot write-up and related docs are in [ablation-lab/evolving-review-councils](https://github.com/ablation-lab/evolving-review-councils).
 
@@ -50,6 +50,6 @@ This needs a full ffmpeg on PATH. It does two things:
 1. `scripts/normalize-voiceover.mjs` writes loudness-normalised copies (-14 LUFS, peaks at or below about -1.5 dBFS) to `public/audio/sceneNN.mp3`. That's the audio the video plays.
 2. `scripts/align-voiceover.mjs` finds the pauses in each clip, matches them to the punctuation in `script.md`, and writes per-word timings to `src/voiceover.json`. Scene lengths and every animation cue follow from those timings.
 
-If you change the wording, update `script.md` and the matching narration in `src/timing.ts`, then re-run it. `src/timing.ts` refuses to build if a recording's word count no longer matches its narration.
+If you change the wording, update [script.md](script.md) and the matching narration in `src/timing.ts`, then re-run it. `src/timing.ts` refuses to build if a recording's word count no longer matches its narration.
 
 To check a recording's wording, `scripts/transcribe-windows.ps1` transcribes a WAV with Windows' built-in speech recogniser. It's rough, but good enough to spot changed phrases.

@@ -1,6 +1,6 @@
 // Loudness-normalises the ElevenLabs clips (sceneNN.mp3 in the project root)
 // to TARGET_LUFS, writing copies to public/audio/sceneNN.mp3. Clips listed in
-// EDITS are re-spliced first (pauses tightened, a phrase re-paced). The
+// EDITS are re-spliced first (pauses tightened, a line re-recorded). The
 // originals are never modified.
 //
 // Usage: node scripts/normalize-voiceover.mjs   (needs a full ffmpeg on PATH)
@@ -15,6 +15,7 @@ import path from 'node:path';
  *  tempo   < 1 slows a piece (Rubber Band, pitch unchanged)
  *  gainDb  level change for the piece
  *  fadeInS softer onset for the piece
+ *  file    take the piece from this recording instead (a re-recorded line)
  */
 const EDITS = {
   // "…clean on its first pass. The limits: one app, one run…"
@@ -22,8 +23,15 @@ const EDITS = {
   // shortened (0.69 → ~0.48 s before, 0.45 → ~0.27 s after); the words
   // themselves are left exactly as recorded. (Time-stretching the phrase
   // was tried and sounded robotic.)
+  //
+  // "Those rounds found 97 problems…" is a re-recorded take (same voice and
+  // settings) saying "most of the serious bugs came from agents" instead of
+  // "every serious bug came from an agent". It replaces 10.12–18.40 s of the
+  // original, keeping the pauses either side, and is 1.2 dB quieter to match.
   'scene07.mp3': [
-    {from: 0, to: 23.3},
+    {from: 0, to: 10.05},
+    {file: 'scene07-line.mp3', from: 0, to: 8.3, gainDb: -1.2},
+    {from: 18.4, to: 23.3},
     {from: 23.5, to: 24.2},
     {from: 24.38},
   ],
@@ -31,17 +39,20 @@ const EDITS = {
 
 /** Applies a clip's EDITS into a temporary WAV and returns its path. */
 const applyEdits = (src, pieces) => {
+  const inputs = [src, ...new Set(pieces.filter((p) => p.file).map((p) => p.file))];
   const filters = pieces.map((p, i) => {
     const chain = [`atrim=start=${p.from}${p.to === undefined ? '' : `:end=${p.to}`}`, 'asetpts=PTS-STARTPTS'];
+    // Pieces from different recordings must share a format to be joined.
+    chain.push('aresample=44100', 'aformat=channel_layouts=mono');
     if (p.tempo) chain.push(`rubberband=tempo=${p.tempo}`);
     if (p.gainDb) chain.push(`volume=${p.gainDb}dB`);
     // Tiny fades at every splice so cuts never click.
     chain.push(`afade=t=in:d=${p.fadeInS ?? 0.01}`, 'areverse', 'afade=t=in:d=0.01', 'areverse');
-    return `[0:a]${chain.join(',')}[p${i}]`;
+    return `[${inputs.indexOf(p.file ?? src)}:a]${chain.join(',')}[p${i}]`;
   });
   const concat = `${pieces.map((_, i) => `[p${i}]`).join('')}concat=n=${pieces.length}:v=0:a=1[out]`;
   const out = path.join(os.tmpdir(), `edited-${path.basename(src, '.mp3')}.wav`);
-  ffmpeg(['-y', '-i', src, '-filter_complex', `${filters.join(';')};${concat}`, '-map', '[out]', '-c:a', 'pcm_s16le', out]);
+  ffmpeg(['-y', ...inputs.flatMap((f) => ['-i', f]), '-filter_complex', `${filters.join(';')};${concat}`, '-map', '[out]', '-c:a', 'pcm_s16le', out]);
   return out;
 };
 

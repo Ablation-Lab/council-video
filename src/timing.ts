@@ -72,7 +72,7 @@ export const SCENES: SceneMeta[] = [
     chapter: '07',
     title: 'What the WinScope pilot showed',
     narration:
-      "The WinScope pilot was informal, but its numbers are real. About half its 3.7 million subagent tokens went on review and verification. Those rounds found 97 problems the builders' tests had passed, and every serious bug came from an agent that hadn't written the code. Verification after fixes never came back clean on its first pass. The limits: one app, one run, Linux only, reviewers with saved memory, and a fixed council size. The formal experiment varies that.",
+      "The WinScope pilot was informal, but its numbers are real. About half its 3.7 million subagent tokens went on review and verification. Those rounds found 97 problems the builders' tests had passed, and most of the serious bugs came from agents that hadn't written the code. Verification after fixes never came back clean on its first pass. The limits: one app, one run, Linux only, reviewers with saved memory, and a fixed council size. The formal experiment varies that.",
   },
   {
     id: 's08',
