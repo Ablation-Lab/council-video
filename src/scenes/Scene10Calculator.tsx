@@ -296,10 +296,10 @@ const Closing: React.FC<{frame: number}> = ({frame}) => (
   </div>
 );
 
-const EndCard: React.FC<{frame: number; start: number}> = ({frame, start}) => {
+const EndCard: React.FC<{frame: number; start: number; withClosing: boolean}> = ({frame, start, withClosing}) => {
   const closeAt = cue('WinScope showed');
   // The faint tree is gone before the first closing line appears in its place.
-  const settle = prog(frame, closeAt - 20, 20);
+  const settle = withClosing ? prog(frame, closeAt - 20, 20) : 0;
   return (
     <>
       <div style={{opacity: prog(frame, start, 40) * (1 - settle)}}>
@@ -343,12 +343,13 @@ const EndCard: React.FC<{frame: number; start: number}> = ({frame, start}) => {
           github.com/geodnb/evolving-review-councils
         </div>
       </div>
-      <Closing frame={frame} />
+      {withClosing && <Closing frame={frame} />}
     </>
   );
 };
 
-export const Scene10Calculator: React.FC = () => {
+/** `withClosing={false}` keeps the plain repo end card (used by the teaser). */
+export const Scene10Calculator: React.FC<{withClosing?: boolean}> = ({withClosing = true}) => {
   const frame = useCurrentFrame();
   const endAt = cue('Everything is public');
   const out = prog(frame, endAt - 10, 20);
@@ -369,7 +370,7 @@ export const Scene10Calculator: React.FC = () => {
           </Caption>
         </div>
       )}
-      {frame >= endAt - 10 && <EndCard frame={frame} start={endAt} />}
+      {frame >= endAt - 10 && <EndCard frame={frame} start={endAt} withClosing={withClosing} />}
     </SceneFrame>
   );
 };

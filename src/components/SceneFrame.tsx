@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {createContext, useContext} from 'react';
 import {AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {colors, fonts, layout, type} from '../theme';
 import {getScene} from '../timing';
 
 const FADE = 12;
+
+/** False where a parent handles transitions itself (the teaser's excerpts). */
+export const SceneEdgeFades = createContext(true);
 
 /**
  * Shared wrapper for every scene: background, chapter tag, and a short fade at
@@ -19,7 +22,8 @@ export const SceneFrame: React.FC<{
   const frame = useCurrentFrame();
   const {durationInFrames} = useVideoConfig();
   const scene = getScene(sceneId);
-  const opacity = interpolate(
+  const edgeFades = useContext(SceneEdgeFades);
+  const opacity = !edgeFades ? 1 : interpolate(
     frame,
     [0, FADE, durationInFrames - fadeOutFrames, durationInFrames],
     [0, 1, 1, 0],

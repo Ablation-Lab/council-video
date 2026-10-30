@@ -12,6 +12,7 @@ import {Scene07Pilot} from './scenes/Scene07Pilot';
 import {Scene08SideExperiments} from './scenes/Scene08SideExperiments';
 import {Scene09Accents} from './scenes/Scene09Accents';
 import {Scene10Calculator} from './scenes/Scene10Calculator';
+import {Teaser, teaserDurationInFrames} from './Teaser';
 import {FPS, SCENES, sceneDurationInFrames, totalDurationInFrames} from './timing';
 
 const WIDTH = 1920;
@@ -62,6 +63,14 @@ export const RemotionRoot: React.FC = () => (
       id="Explainer"
       component={Explainer}
       durationInFrames={totalDurationInFrames}
+      fps={FPS}
+      width={WIDTH}
+      height={HEIGHT}
+    />
+    <Composition
+      id="Teaser"
+      component={Teaser}
+      durationInFrames={teaserDurationInFrames}
       fps={FPS}
       width={WIDTH}
       height={HEIGHT}

@@ -162,6 +162,30 @@ export const makeCue = (id: string) => {
   };
 };
 
+/**
+ * Seconds (scene time, including the lead-in) from the start of `firstPhrase`
+ * to the end of the word `lastPhrase` ends on. Used to cut clean excerpts.
+ */
+export const phraseSpan = (id: string, firstPhrase: string, lastPhrase: string) => {
+  const scene = getScene(id);
+  const clip = getVoiceover(scene);
+  if (!clip) throw new Error(`${id} has no recording`);
+  const all = words(scene.narration);
+  const find = (phrase: string, from = 0) => {
+    const target = words(phrase).map((w) => w.norm);
+    for (let i = from; i <= all.length - target.length; i++) {
+      if (target.every((w, j) => all[i + j].norm === w)) return i;
+    }
+    throw new Error(`"${phrase}" not found in narration of ${id}`);
+  };
+  const first = find(firstPhrase);
+  const lastWord = all[find(lastPhrase, first) + words(lastPhrase).length - 1];
+  return {
+    startS: LEAD_IN_S + clip.words[all[first].index].startMs / 1000,
+    endS: LEAD_IN_S + clip.words[lastWord.index].endMs / 1000,
+  };
+};
+
 export const totalDurationInFrames = SCENES.reduce(
   (sum, s) => sum + sceneDurationInFrames(s),
   0,
