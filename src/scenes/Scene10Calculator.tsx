@@ -213,7 +213,7 @@ const FeedbackLoop: React.FC<{frame: number}> = ({frame}) => {
 };
 
 const DELIVERABLES = [
-  {title: 'GitHub repo', sub: 'calculator + this video’s source'},
+  {title: 'GitHub repo', sub: 'the plan, pilot results and links to the video source'},
   {title: 'Write-up', sub: 'results, and why each council size is set where it is'},
   {title: 'Raw run logs', sub: 'every run, so anyone can check'},
 ];
@@ -340,7 +340,7 @@ const EndCard: React.FC<{frame: number; start: number; withClosing: boolean}> = 
             ...fadeUp(frame, cue('the raw run logs', 1), 24),
           }}
         >
-          github.com/geodnb/evolving-review-councils
+          github.com/ablation-lab/evolving-review-councils
         </div>
       </div>
       {withClosing && <Closing frame={frame} />}

@@ -190,5 +190,5 @@ Source: "How the agents built and reviewed WinScope", revision 20 (11 rounds). T
    ```
    Caption: *"slots filled from real run results"*.
 3. A small loop arrow runs from `run logs` back into the calculator.
-4. End card: three items, `GitHub repo` · `write-up` · `raw logs`, plus the repo URL `github.com/geodnb/evolving-review-councils`. The tree from Scene 3 sits faintly behind.
+4. End card: three items, `GitHub repo` · `write-up` · `raw logs`, plus the repo URL `github.com/ablation-lab/evolving-review-councils`. The tree from Scene 3 sits faintly behind.
 5. Closing: the faint tree fades out and the deliverables dim slightly. Three lines build above the title, one per sentence. The last line, `That's the next experiment.`, is in accent. Its tree node is `G0`, the same single node that closed Scene 1. The film ends 2.5 s after the last word: 1.5 s on the end card, then a 1 s fade.

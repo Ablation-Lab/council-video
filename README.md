@@ -2,6 +2,8 @@
 
 An animated explainer, built with [Remotion](https://www.remotion.dev/), for the experiment described in `plan.md`. The full script is in `script.md`.
 
+The experiment plan, pilot write-up and related docs are in [ablation-lab/evolving-review-councils](https://github.com/ablation-lab/evolving-review-councils).
+
 ## Status
 
 | Scene | Component | State |
