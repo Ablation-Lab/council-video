@@ -13,13 +13,15 @@ export const SceneFrame: React.FC<{
   sceneId: string;
   children: React.ReactNode;
   hideChapter?: boolean;
-}> = ({sceneId, children, hideChapter}) => {
+  /** Longer fade at the end, e.g. for the film's last scene. */
+  fadeOutFrames?: number;
+}> = ({sceneId, children, hideChapter, fadeOutFrames = FADE}) => {
   const frame = useCurrentFrame();
   const {durationInFrames} = useVideoConfig();
   const scene = getScene(sceneId);
   const opacity = interpolate(
     frame,
-    [0, FADE, durationInFrames - FADE, durationInFrames],
+    [0, FADE, durationInFrames - fadeOutFrames, durationInFrames],
     [0, 1, 1, 0],
     {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'},
   );

@@ -95,7 +95,8 @@ export const SCENES: SceneMeta[] = [
     title: 'The calculator, and what gets published',
     narration:
       "Once the runs are finished, their results feed a small calculator. You pick a task template, such as a basic app or a system-level tool. It estimates the token cost, council size and model mix, then writes a prompt you can paste into any AI: how many reviewers, which models and effort levels, and what hard caps to apply. Each new run improves the estimates. Everything is public: the GitHub repo, a write-up, and the raw run logs. WinScope showed a council catches what builders miss. The open question is how many reviewers you actually need. That's the next experiment.",
-    extraHoldS: 3.5,
+    // Ends 2.5 s after the last word: 1.5 s of end card, then a 1 s fade.
+    extraHoldS: 1.25,
   },
 ];
 

@@ -353,7 +353,7 @@ export const Scene10Calculator: React.FC = () => {
   const endAt = cue('Everything is public');
   const out = prog(frame, endAt - 10, 20);
   return (
-    <SceneFrame sceneId="s10">
+    <SceneFrame sceneId="s10" fadeOutFrames={30}>
       {out < 1 && (
         <div style={{position: 'absolute', inset: 0, opacity: 1 - out}}>
           <div style={{position: 'absolute', left: 120, top: 84, ...fadeUp(frame, 0, 30)}}>
