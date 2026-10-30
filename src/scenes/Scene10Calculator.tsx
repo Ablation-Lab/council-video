@@ -348,11 +348,18 @@ const EndCard: React.FC<{frame: number; start: number; withClosing: boolean}> = 
   );
 };
 
-/** `withClosing={false}` keeps the plain repo end card (used by the teaser). */
-export const Scene10Calculator: React.FC<{withClosing?: boolean}> = ({withClosing = true}) => {
+/**
+ * Teaser options: `withClosing={false}` keeps the plain repo end card, and
+ * `endCardOnly` skips the calculator so an excerpt cut in just before the end
+ * card doesn't flash the calculator as it fades out.
+ */
+export const Scene10Calculator: React.FC<{withClosing?: boolean; endCardOnly?: boolean}> = ({
+  withClosing = true,
+  endCardOnly = false,
+}) => {
   const frame = useCurrentFrame();
   const endAt = cue('Everything is public');
-  const out = prog(frame, endAt - 10, 20);
+  const out = endCardOnly ? 1 : prog(frame, endAt - 10, 20);
   return (
     <SceneFrame sceneId="s10" fadeOutFrames={30}>
       {out < 1 && (

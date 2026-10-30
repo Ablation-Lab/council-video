@@ -11,13 +11,23 @@ import {FPS, getScene, makeCue, phraseSpan, sceneDurationInFrames} from './timin
 
 // Excerpts of the finished film, cut at sentence ends using the recording's
 // word timings. Each plays the real scene with its real narration.
-const EXCERPTS = [
+type ExcerptSpec = {
+  id: string;
+  first: string;
+  last: string;
+  // Freeze the picture just before the element cued here starts to appear,
+  // when it would otherwise flicker in right before the cut.
+  stillBefore?: {phrase: string; offsetS: number};
+};
+
+const EXCERPTS: ExcerptSpec[] = [
   {id: 's01', first: 'This is WinScope', last: 'during a pilot run'},
   {id: 's01', first: 'Then a fresh reviewer', last: 'never seen the code caught it'},
-  {id: 's03', first: 'Each generation starts', last: "If not, it's discarded"},
+  // G2 appears at cue('A second set of tests', -0.6) in Scene03Evolution.
+  {id: 's03', first: 'Each generation starts', last: "If not, it's discarded", stillBefore: {phrase: 'A second set of tests', offsetS: -0.6}},
   {id: 's07', first: 'Those rounds found 97', last: "hadn't written the code"},
   {id: 's10', first: 'Everything is public', last: 'the raw run logs'},
-] as const;
+];
 
 const PAD_BEFORE = Math.round(0.2 * FPS);
 const PAD_AFTER = Math.round(0.35 * FPS);
@@ -32,7 +42,7 @@ const SCENES: Record<string, React.FC> = {
   s01: Scene01Finding,
   s03: Scene03Evolution,
   s07: Scene07Pilot,
-  s10: () => <Scene10Calculator withClosing={false} />,
+  s10: () => <Scene10Calculator withClosing={false} endCardOnly />,
 };
 
 const segments = EXCERPTS.map((e, i) => {
@@ -43,7 +53,8 @@ const segments = EXCERPTS.map((e, i) => {
   // faded in, so the card it freezes on is complete.
   const isLast = i === EXCERPTS.length - 1;
   const visualEnd = isLast ? Math.max(audioEnd, makeCue('s10')('the raw run logs', 1) + 26) : audioEnd;
-  return {...e, start, audioEnd, visualEnd, isLast};
+  const stillFrom = e.stillBefore ? makeCue(e.id)(e.stillBefore.phrase, e.stillBefore.offsetS) - 1 : Infinity;
+  return {...e, start, audioEnd, visualEnd, isLast, stillFrom};
 });
 
 const Excerpt: React.FC<{seg: (typeof segments)[number]}> = ({seg}) => {
@@ -67,7 +78,10 @@ const Excerpt: React.FC<{seg: (typeof segments)[number]}> = ({seg}) => {
       {/* The scene sees its real length, so its own fades behave as in the film. */}
       <Sequence from={-seg.start} durationInFrames={sceneDurationInFrames(getScene(seg.id))} layout="none">
         <NarrationVolume.Provider value={{volumeAt, visibleFrom: seg.start}}>
-          <Scene />
+          {/* The picture may hold still near the end; the narration keeps playing. */}
+          <Freeze frame={Math.min(seg.stillFrom, seg.visualEnd)} active={(f) => f >= seg.stillFrom}>
+            <Scene />
+          </Freeze>
           <Narration sceneId={seg.id} />
         </NarrationVolume.Provider>
       </Sequence>
