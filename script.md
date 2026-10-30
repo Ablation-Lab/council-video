@@ -1,6 +1,6 @@
 # Evolving Review Councils — Explainer Script (v2, approved)
 
-Narration: ElevenLabs recordings (5:57 of speech), normalised to -14 LUFS. Scene lengths and cues come from the recordings (src/voiceover.json). Total runtime 6:28. 1920×1080, 30 fps.
+Narration: ElevenLabs recordings (5:57 of speech), normalised to -14 LUFS. Scene lengths and cues come from the recordings (src/voiceover.json). Total runtime 6:25. 1920×1080, 30 fps.
 
 ## Global design
 
@@ -175,7 +175,7 @@ Source: "How the agents built and reviewed WinScope", revision 20 (11 rounds). T
 
 ---
 
-## Scene 10 — The calculator, and what gets published (44 s)
+## Scene 10 — The calculator, and what gets published (42 s)
 
 **Narration**
 > Once the runs are finished, their results feed a small calculator. You pick a task template, such as a basic app or a system-level tool. It estimates the token cost, council size and model mix, then writes a prompt you can paste into any AI: how many reviewers, which models and effort levels, and what hard caps to apply. Each new run improves the estimates. Everything is public: the GitHub repo, a write-up, and the raw run logs. WinScope showed a council catches what builders miss. The open question is how many reviewers you actually need. That's the next experiment.
@@ -191,4 +191,4 @@ Source: "How the agents built and reviewed WinScope", revision 20 (11 rounds). T
    Caption: *"slots filled from real run results"*.
 3. A small loop arrow runs from `run logs` back into the calculator.
 4. End card: three items, `GitHub repo` · `write-up` · `raw logs`, plus the repo URL `github.com/geodnb/evolving-review-councils`. The tree from Scene 3 sits faintly behind.
-5. Closing: the faint tree fades out and the deliverables dim slightly. Three lines build above the title, one per sentence. The last line, `That's the next experiment.`, is in accent. Its tree node is `G0`, the same single node that closed Scene 1. The end card then holds for about 4 s after the last word.
+5. Closing: the faint tree fades out and the deliverables dim slightly. Three lines build above the title, one per sentence. The last line, `That's the next experiment.`, is in accent. Its tree node is `G0`, the same single node that closed Scene 1. The film ends 2.5 s after the last word: 1.5 s on the end card, then a 1 s fade.
