@@ -1,11 +1,48 @@
 // Loudness-normalises the ElevenLabs clips (sceneNN.mp3 in the project root)
-// to TARGET_LUFS with ffmpeg's two-pass loudnorm, writing copies to
-// public/audio/sceneNN.mp3. The originals are never modified.
+// to TARGET_LUFS, writing copies to public/audio/sceneNN.mp3. Clips listed in
+// EDITS are re-spliced first (pauses tightened, a phrase re-paced). The
+// originals are never modified.
 //
 // Usage: node scripts/normalize-voiceover.mjs   (needs a full ffmpeg on PATH)
 import {spawnSync} from 'node:child_process';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
+
+/**
+ * Per-clip splices, in seconds of the original recording. Each clip is rebuilt
+ * from these pieces in order; cut points sit inside pauses.
+ *  tempo   < 1 slows a piece (Rubber Band, pitch unchanged)
+ *  gainDb  level change for the piece
+ *  fadeInS softer onset for the piece
+ */
+const EDITS = {
+  // "…clean on its first pass. The limits: one app, one run…"
+  // "The limits:" came in rushed and at full level between two long gaps.
+  // Shorten the gap before it (0.69 → ~0.48 s), slow and soften the phrase,
+  // and shorten the gap after the colon (0.45 → ~0.27 s).
+  'scene07.mp3': [
+    {from: 0, to: 23.3},
+    {from: 23.5, to: 24.2, tempo: 0.88, gainDb: -1.5, fadeInS: 0.05},
+    {from: 24.38},
+  ],
+};
+
+/** Applies a clip's EDITS into a temporary WAV and returns its path. */
+const applyEdits = (src, pieces) => {
+  const filters = pieces.map((p, i) => {
+    const chain = [`atrim=start=${p.from}${p.to === undefined ? '' : `:end=${p.to}`}`, 'asetpts=PTS-STARTPTS'];
+    if (p.tempo) chain.push(`rubberband=tempo=${p.tempo}`);
+    if (p.gainDb) chain.push(`volume=${p.gainDb}dB`);
+    // Tiny fades at every splice so cuts never click.
+    chain.push(`afade=t=in:d=${p.fadeInS ?? 0.01}`, 'areverse', 'afade=t=in:d=0.01', 'areverse');
+    return `[0:a]${chain.join(',')}[p${i}]`;
+  });
+  const concat = `${pieces.map((_, i) => `[p${i}]`).join('')}concat=n=${pieces.length}:v=0:a=1[out]`;
+  const out = path.join(os.tmpdir(), `edited-${path.basename(src, '.mp3')}.wav`);
+  ffmpeg(['-y', '-i', src, '-filter_complex', `${filters.join(';')};${concat}`, '-map', '[out]', '-c:a', 'pcm_s16le', out]);
+  return out;
+};
 
 const TARGET_LUFS = -14;
 const TRUE_PEAK = -1.5;
@@ -47,8 +84,10 @@ const render = (src, out, gainDb) =>
   ]);
 
 console.log('clip          before LUFS  after LUFS  after peak');
-for (const src of sources) {
-  const out = path.join(outDir, src.toLowerCase());
+for (const original of sources) {
+  const out = path.join(outDir, original.toLowerCase());
+  const edits = EDITS[original.toLowerCase()];
+  const src = edits ? applyEdits(original, edits) : original;
   const before = verify(src).lufs;
   let gain = TARGET_LUFS - before;
   render(src, out, gain);
@@ -60,6 +99,6 @@ for (const src of sources) {
     after = verify(out);
   }
   console.log(
-    `${src.padEnd(13)} ${before.toFixed(1).padStart(9)}  ${after.lufs.toFixed(1).padStart(9)}  ${after.peak.toFixed(1).padStart(6)} dBFS`,
+    `${(original + (edits ? "*" : "")).padEnd(13)} ${before.toFixed(1).padStart(9)}  ${after.lufs.toFixed(1).padStart(9)}  ${after.peak.toFixed(1).padStart(6)} dBFS`,
   );
 }
