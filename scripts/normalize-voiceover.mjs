@@ -18,12 +18,13 @@ import path from 'node:path';
  */
 const EDITS = {
   // "…clean on its first pass. The limits: one app, one run…"
-  // "The limits:" came in rushed and at full level between two long gaps.
-  // Shorten the gap before it (0.69 → ~0.48 s), slow and soften the phrase,
-  // and shorten the gap after the colon (0.45 → ~0.27 s).
+  // "The limits:" sat isolated between two long gaps. Only the pauses are
+  // shortened (0.69 → ~0.48 s before, 0.45 → ~0.27 s after); the words
+  // themselves are left exactly as recorded. (Time-stretching the phrase
+  // was tried and sounded robotic.)
   'scene07.mp3': [
     {from: 0, to: 23.3},
-    {from: 23.5, to: 24.2, tempo: 0.88, gainDb: -1.5, fadeInS: 0.05},
+    {from: 23.5, to: 24.2},
     {from: 24.38},
   ],
 };
