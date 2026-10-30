@@ -75,7 +75,7 @@ const Timeline: React.FC<{frame: number}> = ({frame}) => {
 const OwnershipTable: React.FC<{frame: number}> = ({frame}) => {
   const sharedAccent = prog(frame, cue('It sat in shared code'), 20);
   return (
-    <div style={{position: 'absolute', left: 120, top: 430, width: 760}}>
+    <div style={{position: 'absolute', left: 120, top: 414, width: 760}}>
       <Eyebrow style={{display: 'flex', marginBottom: 14, ...fadeUp(frame, cue('A coordinator wrote'))}}>
         <span style={{width: 270, paddingLeft: 20}}>Folder</span>
         <span style={{width: 180}}>Owner</span>
@@ -138,10 +138,11 @@ const ReviewerAndLog: React.FC<{frame: number}> = ({frame}) => {
   const reviewerAt = cue('Then a fresh reviewer');
   const emphasis = prog(frame, cue('A reviewer that had never seen'), 20);
   const highlight = prog(frame, cue('An admin process'), 15);
-  const findingAt = cue('privilege-escalation hole', -0.3);
+  const findingAt = cue('a flaw that could hand', -0.3);
+  const consequenceAt = cue('hand an attacker admin rights');
   const locationAt = cue('It sat in shared code');
   return (
-    <div style={{position: 'absolute', left: 960, top: 430, width: 840}}>
+    <div style={{position: 'absolute', left: 960, top: 414, width: 840}}>
       {/* Reviewer card */}
       <div
         style={{
@@ -186,6 +187,8 @@ const ReviewerAndLog: React.FC<{frame: number}> = ({frame}) => {
               backgroundColor: colors.accentSoft,
               borderLeft: highlight > 0 ? `4px solid ${colors.accent}` : 'none',
               borderRadius: 4,
+              // Hidden until the sweep starts, so no stub shows beforehand.
+              opacity: highlight > 0 ? 1 : 0,
             }}
           />
           {LOG.map((l, i) => {
@@ -214,9 +217,12 @@ const ReviewerAndLog: React.FC<{frame: number}> = ({frame}) => {
           ...fadeUp(frame, findingAt, 24, 12),
         }}
       >
-        <Eyebrow style={{color: colors.accent}}>Finding · Serious · Privilege escalation</Eyebrow>
+        <Eyebrow style={{color: colors.accent}}>Finding · Serious</Eyebrow>
         <div style={{fontSize: 34, fontWeight: 600, marginTop: 8}}>
           Admin process trusts a user-writable folder
+        </div>
+        <div style={{fontSize: type.caption, color: colors.text, marginTop: 6, ...fadeUp(frame, consequenceAt, 18, 6)}}>
+          Could hand an attacker admin rights
         </div>
         <div
           style={{

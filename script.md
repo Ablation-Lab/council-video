@@ -1,6 +1,6 @@
 # Evolving Review Councils — Explainer Script (v2, approved)
 
-Narration is 893 words, read at 160 wpm (~5:35), plus short pauses between scenes. Total runtime 6:05. Timings are computed in `src/timing.ts`. 1920×1080, 30 fps.
+Narration: ElevenLabs recordings (5:57 of speech), normalised to -14 LUFS. Scene lengths and cues come from the recordings (src/voiceover.json). Total runtime 6:28. 1920×1080, 30 fps.
 
 ## Global design
 
@@ -14,11 +14,11 @@ Narration is 893 words, read at 160 wpm (~5:35), plus short pauses between scene
 
 ---
 
-## Scene 1 — The finding (44 s)
+## Scene 1 — The finding (47 s)
 
 **Narration**
 > This is WinScope, a Windows app built by AI agents during a pilot run. A coordinator wrote the shared code first and reviewed it itself. Then four builders worked in parallel, one folder each. Their tests passed.
-> Then a fresh reviewer ran an integration audit. It found that when WinScope ran as admin, it wrote settings and logs into the user's own AppData folder. An admin process that trusts a folder the user can write to is a privilege-escalation hole. It sat in shared code that no builder owned.
+> Then a fresh reviewer ran an integration audit. It found that when WinScope ran as admin, it wrote settings and logs into the user's own AppData folder. An admin process that trusts a folder the user can write to is a flaw that could hand an attacker admin rights. It sat in shared code that no builder owned.
 > A reviewer that had never seen the code caught it. This project builds on that: reviewers that improve over generations.
 
 **On screen**
@@ -32,14 +32,14 @@ Narration is 893 words, read at 160 wpm (~5:35), plus short pauses between scene
    [integration-audit] writes: settings, logs
    [integration-audit] target: %APPDATA%  (writable by: standard user)
    ```
-6. A finding card lands beside it: `FINDING · SERIOUS · admin process trusts a user-writable folder → privilege escalation · location: shared code (no owner)`. At the same moment, the `shared/` tile in the ownership map takes the accent outline.
+6. A finding card lands beside it: `FINDING · SERIOUS`, titled `Admin process trusts a user-writable folder`, then `Could hand an attacker admin rights` and `location: shared code (no owner)`. At the same moment, the `shared/` tile in the ownership map takes the accent outline.
 7. Everything scales down and settles into one small node on the left. That node is the first node of the Generation Tree. Title fades in: **Evolving Review Councils**.
 
 **Animation:** the timeline draws at a steady pace. Log lines type at ~30 characters/s. The highlight bar sweeps across the last line over 15 frames. The finding card rises 12 px as it fades in. Final collapse takes about 1.5 s with ease-in-out.
 
 ---
 
-## Scene 2 — More isn't free (23 s)
+## Scene 2 — More isn't free (27 s)
 
 **Narration**
 > The obvious fix is more reviewers. But every reviewer costs tokens, and studies of multi-agent systems find that adding agents often hits a ceiling. Identical reviewers mostly repeat each other. So this experiment asks how many reviewers a given kind of task is worth. We'll follow one small app throughout: a command-line file renamer.
@@ -53,7 +53,7 @@ Narration is 893 words, read at 160 wpm (~5:35), plus short pauses between scene
 
 ---
 
-## Scene 3 — How the council evolves (38 s)
+## Scene 3 — How the council evolves (37 s)
 
 **Narration**
 > Each generation starts from the best version so far and tries to improve it. A judge runs fixed tests. If the score rises, the change is kept. If not, it's discarded.
@@ -73,7 +73,7 @@ Narration is 893 words, read at 160 wpm (~5:35), plus short pauses between scene
 
 ---
 
-## Scene 4 — Size depends on the task (26 s)
+## Scene 4 — Size depends on the task (27 s)
 
 **Narration**
 > The optimum probably isn't one number, so the same sweep runs on tasks of different complexity. A basic app like the renamer might need around six reviewers, a scientific app around twenty, frontier research far more. These are guesses to test, not results. The aim is a rough scale of review effort per tier, to set the starting council size for a new task.
@@ -86,7 +86,7 @@ Narration is 893 words, read at 160 wpm (~5:35), plus short pauses between scene
 
 ---
 
-## Scene 5 — Keeping it fair (29 s)
+## Scene 5 — Keeping it fair (30 s)
 
 **Narration**
 > Only the council is allowed to change. Every run starts in a fresh chat, with no memory of earlier runs and no hint of the hoped-for result. The judge scores outputs blind, without knowing which size or model produced them. Every setup gets the same app, the same starting code and the same tests. And everything runs in a sandbox. The sandbox stops agents touching anything real. Fresh chats stop earlier context biasing the results.
@@ -99,7 +99,7 @@ Narration is 893 words, read at 160 wpm (~5:35), plus short pauses between scene
 
 ---
 
-## Scene 6 — Cheating, collusion and other failure modes (54 s)
+## Scene 6 — Cheating, collusion and other failure modes (58 s)
 
 **Narration**
 > Agents rewarded for winning may try to game the score. Here's one way it can look. A branch jumps from seventy-one to ninety-four. The diff shows why: it didn't fix the bug, it skipped the test. On the held-out tests, which it never saw, it scores sixty-five. The judge also flags any change that weakens, skips or edits tests, so the branch is thrown out.
@@ -130,7 +130,7 @@ Narration is 893 words, read at 160 wpm (~5:35), plus short pauses between scene
 
 ---
 
-## Scene 7 — What the WinScope pilot showed (32 s)
+## Scene 7 — What the WinScope pilot showed (35 s)
 
 **Narration**
 > The WinScope pilot was informal, but its numbers are real. About half its 3.7 million subagent tokens went on review and verification. Those rounds found 97 problems the builders' tests had passed, and every serious bug came from an agent that hadn't written the code. Verification after fixes never came back clean on its first pass.
@@ -148,7 +148,7 @@ Source: "How the agents built and reviewed WinScope", revision 20 (11 rounds). T
 
 ---
 
-## Scene 8 — Side experiments (41 s)
+## Scene 8 — Side experiments (45 s)
 
 **Narration**
 > Two side experiments use the same setup. In a knockout tournament, reviewers are eliminated round by round until one remains. The hard tests decide each round, not votes, because AI judges tend to favour their own style. The single winner is then compared with a varied team, since earlier research suggests diversity can beat one top reviewer.
@@ -162,7 +162,7 @@ Source: "How the agents built and reviewed WinScope", revision 20 (11 rounds). T
 
 ---
 
-## Scene 9 — Beyond code: accents (36 s)
+## Scene 9 — Beyond code: accents (38 s)
 
 **Narration**
 > The same method could reach beyond code. Take speech recognition and a Welsh accent. The benchmark is real recordings with transcripts checked by a person, scored by word error rate: the share of words the system gets wrong. The council can't retrain the speech model, so it evolves the step after it, the part that corrects and interprets what was heard. Some speakers are held back as unseen tests, so the system learns the accent rather than individual voices. If AI hears some accents worse than others, whole regions can quietly get worse answers.
@@ -175,7 +175,7 @@ Source: "How the agents built and reviewed WinScope", revision 20 (11 rounds). T
 
 ---
 
-## Scene 10 — The calculator, and what gets published (42 s)
+## Scene 10 — The calculator, and what gets published (44 s)
 
 **Narration**
 > Once the runs are finished, their results feed a small calculator. You pick a task template, such as a basic app or a system-level tool. It estimates the token cost, council size and model mix, then writes a prompt you can paste into any AI: how many reviewers, which models and effort levels, and what hard caps to apply. Each new run improves the estimates. Everything is public: the GitHub repo, a write-up, and the raw run logs. WinScope showed a council catches what builders miss. The open question is how many reviewers you actually need. That's the next experiment.

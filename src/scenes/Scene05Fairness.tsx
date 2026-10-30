@@ -69,7 +69,7 @@ const RunRow: React.FC<{i: number; frame: number}> = ({i, frame}) => {
             whiteSpace: 'nowrap',
           }}
         >
-          {fresh < 1 ? `context: ${prior} prior msgs` : 'context: empty'}
+          {fresh < 1 ? `context: ${prior} msgs` : 'context: empty'}
         </div>
       </div>
       {/* A small generation chain per run */}

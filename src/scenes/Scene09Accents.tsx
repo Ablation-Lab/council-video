@@ -38,7 +38,7 @@ const Waveform: React.FC<{frame: number}> = ({frame}) => {
   return (
     <svg width={W} height={H} style={{position: 'absolute', left: 120, top: 270}}>
       {BARS.map((b, i) => {
-        const visible = i / BARS.length <= draw;
+        const visible = i / BARS.length < draw;
         const h = b * H;
         return (
           <rect

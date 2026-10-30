@@ -8,7 +8,7 @@
     "render": "remotion render Explainer out/explainer.mp4",
     "still": "remotion still",
     "typecheck": "tsc --noEmit",
-    "narration": "node scripts/narration.mjs --rate=2"
+    "voiceover": "node scripts/normalize-voiceover.mjs && node scripts/align-voiceover.mjs"
   },
   "dependencies": {
     "@remotion/cli": "4.0.535",
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@remotion/bundler": "4.0.535",
+    "@remotion/install-whisper-cpp": "4.0.535",
     "@remotion/renderer": "4.0.535",
     "@types/react": "18.3.12",
     "typescript": "5.6.3"
