@@ -1,0 +1,29 @@
+{
+  "name": "council-video",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Explainer video for the Evolving Review Councils experiment, built with Remotion",
+  "scripts": {
+    "dev": "remotion studio",
+    "render": "remotion render Explainer out/explainer.mp4",
+    "still": "remotion still",
+    "typecheck": "tsc --noEmit",
+    "narration": "node scripts/narration.mjs --rate=2"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.535",
+    "@remotion/google-fonts": "4.0.535",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.535"
+  },
+  "devDependencies": {
+    "@remotion/bundler": "4.0.535",
+    "@remotion/renderer": "4.0.535",
+    "@types/react": "18.3.12",
+    "typescript": "5.6.3"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true
+  }
+}

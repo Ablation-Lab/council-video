@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Rendered output: videos, stills, review frames
+out/
+*.mp4
+*.mov
+*.webm
+*.gif
+
+# Remotion and bundler build artefacts
+build/
+dist/
+.remotion/
+
+# Temporary TTS narration (regenerate with `npm run narration`).
+# manifest.json stays tracked so the project builds; the WAVs are large.
+public/audio/*.wav
+
+# Logs and editor/OS files
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local environment files
+.env
+.env.*

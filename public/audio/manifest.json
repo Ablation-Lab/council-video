@@ -1,0 +1,46 @@
+{
+  "voice": "Microsoft Hazel Desktop",
+  "rate": 2,
+  "scenes": {
+    "s01": {
+      "file": "audio/s01.wav",
+      "seconds": 38.889
+    },
+    "s02": {
+      "file": "audio/s02.wav",
+      "seconds": 21.511
+    },
+    "s03": {
+      "file": "audio/s03.wav",
+      "seconds": 31.588
+    },
+    "s04": {
+      "file": "audio/s04.wav",
+      "seconds": 22.271
+    },
+    "s05": {
+      "file": "audio/s05.wav",
+      "seconds": 27.754
+    },
+    "s06": {
+      "file": "audio/s06.wav",
+      "seconds": 49.12
+    },
+    "s07": {
+      "file": "audio/s07.wav",
+      "seconds": 31.224
+    },
+    "s08": {
+      "file": "audio/s08.wav",
+      "seconds": 40.121
+    },
+    "s09": {
+      "file": "audio/s09.wav",
+      "seconds": 33.428
+    },
+    "s10": {
+      "file": "audio/s10.wav",
+      "seconds": 37.402
+    }
+  }
+}
