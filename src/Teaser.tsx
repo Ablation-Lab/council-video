@@ -2,10 +2,10 @@ import React from 'react';
 import {AbsoluteFill, Freeze, interpolate, Sequence, Series, useCurrentFrame} from 'remotion';
 import {Narration, NarrationVolume} from './components/Narration';
 import {SceneEdgeFades} from './components/SceneFrame';
-import {Scene01Finding} from './scenes/Scene01Finding';
-import {Scene03Evolution} from './scenes/Scene03Evolution';
-import {Scene07Pilot} from './scenes/Scene07Pilot';
-import {Scene10Calculator} from './scenes/Scene10Calculator';
+import {Scene01Spark} from './scenes/Scene01Spark';
+import {Scene03FreshEyes} from './scenes/Scene03FreshEyes';
+import {Scene08Evolution} from './scenes/Scene08Evolution';
+import {Scene16WhatsNext} from './scenes/Scene16WhatsNext';
 import {colors} from './theme';
 import {FPS, getScene, makeCue, phraseSpan, sceneDurationInFrames} from './timing';
 
@@ -22,11 +22,12 @@ type ExcerptSpec = {
 
 const EXCERPTS: ExcerptSpec[] = [
   {id: 's01', first: 'This is WinScope', last: 'during a pilot run'},
-  {id: 's01', first: 'Then a fresh reviewer', last: 'never seen the code caught it'},
-  // G2 appears at cue('A second set of tests', -0.6) in Scene03Evolution.
-  {id: 's03', first: 'Each generation starts', last: "If not, it's discarded", stillBefore: {phrase: 'A second set of tests', offsetS: -0.6}},
-  {id: 's07', first: 'Those rounds found 97', last: "hadn't written the code"},
-  {id: 's10', first: 'Everything is public', last: 'the raw run logs'},
+  {id: 's03', first: 'Then an independent reviewer', last: 'never seen the code caught it'},
+  // The 97, round by round, with fixes in between (r4-03-pattern).
+  {id: 's03', first: 'Across the pilot', last: 'not proof that councils work'},
+  // G2 appears at cue('A second set of tests', -0.6) in Scene08Evolution.
+  {id: 's08', first: 'A judge runs fixed tests', last: "If not, it's discarded", stillBefore: {phrase: 'A second set of tests', offsetS: -0.6}},
+  {id: 's16', first: 'The GitHub repo is public now', last: 'after the runs'},
 ];
 
 const PAD_BEFORE = Math.round(0.2 * FPS);
@@ -39,10 +40,10 @@ const END_STILL = Math.round(1.5 * FPS);
 const END_FADE = FPS;
 
 const SCENES: Record<string, React.FC> = {
-  s01: Scene01Finding,
-  s03: Scene03Evolution,
-  s07: Scene07Pilot,
-  s10: () => <Scene10Calculator withClosing={false} endCardOnly />,
+  s01: Scene01Spark,
+  s03: Scene03FreshEyes,
+  s08: Scene08Evolution,
+  s16: () => <Scene16WhatsNext endCardOnly withFollow={false} />,
 };
 
 const segments = EXCERPTS.map((e, i) => {
@@ -52,7 +53,7 @@ const segments = EXCERPTS.map((e, i) => {
   // The last excerpt keeps playing (silently) until the repo URL has fully
   // faded in, so the card it freezes on is complete.
   const isLast = i === EXCERPTS.length - 1;
-  const visualEnd = isLast ? Math.max(audioEnd, makeCue('s10')('the raw run logs', 1) + 26) : audioEnd;
+  const visualEnd = isLast ? Math.max(audioEnd, makeCue('s16')('raw run logs will be', 1) + 26) : audioEnd;
   const stillFrom = e.stillBefore ? makeCue(e.id)(e.stillBefore.phrase, e.stillBefore.offsetS) - 1 : Infinity;
   return {...e, start, audioEnd, visualEnd, isLast, stillFrom};
 });

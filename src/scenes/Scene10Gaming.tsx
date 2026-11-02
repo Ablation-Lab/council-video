@@ -3,11 +3,12 @@ import {interpolate, useCurrentFrame} from 'remotion';
 import {Caption, Eyebrow, SceneFrame} from '../components/SceneFrame';
 import {Lock} from '../components/Icons';
 import {Lines, NODE_H, NODE_W, TreeEdge, TreeNode} from '../components/Tree';
+import {PartMarker, Tag, phase} from '../components/Kit';
 import {fadeUp, mix, prog, typed} from '../anim';
 import {colors, fonts, type} from '../theme';
 import {makeCue} from '../timing';
 
-const cue = makeCue('s06');
+const cue = makeCue('s10');
 
 const Heading: React.FC<{eyebrow: string; title: string; frame: number; start: number}> = ({
   eyebrow,
@@ -37,8 +38,9 @@ const PhaseGaming: React.FC<{frame: number}> = ({frame}) => {
   const diffAt = cue('The diff shows why');
   const hotAt = cue('it skipped the test');
   const heldAt = cue('On the held-out tests');
-  const flagsAt = cue('The judge also flags');
-  const outAt = cue('so the branch is thrown out');
+  const flagsAt = cue('So the judge also checks the tests');
+  const itemsAt = [cue('weakens'), cue('skips'), cue('or edits a test')];
+  const outAt = cue('and this branch is thrown out');
 
   const branch = prog(frame, jumpAt, 24);
   const score = Math.round(interpolate(frame, [jumpAt + 10, jumpAt + 40], [71, 94], {
@@ -50,7 +52,11 @@ const PhaseGaming: React.FC<{frame: number}> = ({frame}) => {
 
   return (
     <>
-      <Heading eyebrow="Gaming the score" title="A branch that only looks better" frame={frame} start={0} />
+      <Heading eyebrow="How it could look" title="A branch that only looks better" frame={frame} start={jumpAt - 10} />
+      {/* Plain-language labels for the two terms */}
+      <div style={{position: 'absolute', left: G2[0] - 100, top: G2[1] - NODE_H / 2 - 50, fontFamily: fonts.mono, fontSize: type.caption, color: colors.muted, whiteSpace: 'nowrap', ...fadeUp(frame, jumpAt + 4, 20)}}>
+        branch = one council version
+      </div>
       <Lines>
         <TreeEdge from={G2} to={G3X} draw={branch} kept={1 - out} discard={out} />
       </Lines>
@@ -124,7 +130,7 @@ const PhaseGaming: React.FC<{frame: number}> = ({frame}) => {
         }}
       >
         <div style={{fontSize: type.caption, color: colors.muted, marginBottom: 10}}>
-          diff · tests/test_rename.py
+          diff (the code change) · tests/test_rename.py
         </div>
         {DIFF.map((d, i) => (
           <div
@@ -151,9 +157,10 @@ const PhaseGaming: React.FC<{frame: number}> = ({frame}) => {
 
       {/* Judge's test-change checks */}
       <div style={{position: 'absolute', left: 1200, top: 300, width: 600, ...fadeUp(frame, flagsAt, 24)}}>
-        <Eyebrow>Judge flags any change that</Eyebrow>
+        <Eyebrow>Judge also watches tests</Eyebrow>
+        <div style={{fontSize: type.caption, color: colors.muted, marginTop: 8}}>It flags any change that</div>
         {FLAGS.map((f, i) => {
-          const isHot = i === 1 && frame >= flagsAt + 20;
+          const isHot = i === 1 && frame >= itemsAt[1];
           return (
             <div
               key={f}
@@ -169,7 +176,7 @@ const PhaseGaming: React.FC<{frame: number}> = ({frame}) => {
                 border: `2px solid ${isHot ? colors.accent : colors.line}`,
                 backgroundColor: colors.panel,
                 fontSize: type.small,
-                ...fadeUp(frame, flagsAt + 6 + i * 6, 20),
+                ...fadeUp(frame, itemsAt[i], 18),
               }}
             >
               <span>{f}</span>
@@ -206,18 +213,24 @@ const LOG_LINE = 44;
 const LOG_VISIBLE = 9;
 
 const PhaseCollusion: React.FC<{frame: number; start: number}> = ({frame, start}) => {
-  const directAt = cue('Agents never message each other directly');
-  const orchAt = cue('Everything goes through the orchestrator');
+  // Each element lands on the words that describe it.
+  const reviewersAt = cue('so the design removes the channels');
+  const directAt = cue('never message each other');
+  const strikeAt = cue('directly');
+  const routeAt = cue('goes through the orchestrator');
+  const orchAt = cue('the orchestrator and is logged');
+  const loggedAt = cue('and is logged');
   const paraAt = cue('Messages are paraphrased');
+  const rewriteAt = cue('which breaks signals');
   const judgeAt = cue('The judge sees code and test results');
-  const auditAt = cue('And the logs are audited');
+  const auditAt = cue('audited for odd patterns');
 
-  const direct = prog(frame, directAt, 24);
-  const directOut = prog(frame, orchAt, 20);
-  const strike = prog(frame, directAt + 18, 14);
-  const orch = prog(frame, orchAt, 24);
+  const direct = prog(frame, directAt, 20);
+  const directOut = prog(frame, routeAt, 20);
+  const strike = prog(frame, strikeAt, 12);
+  const orch = prog(frame, orchAt, 20);
   // Log steps up one line at a time, then stops when the audit begins.
-  const raw = interpolate(frame, [orchAt, auditAt], [0, LOG.length - LOG_VISIBLE], {
+  const raw = interpolate(frame, [loggedAt, auditAt], [0, LOG.length - LOG_VISIBLE], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
@@ -248,7 +261,7 @@ const PhaseCollusion: React.FC<{frame: number; start: number}> = ({frame, start}
             alignItems: 'center',
             justifyContent: 'center',
             fontSize: type.small,
-            ...fadeUp(frame, start + 6 + i * 5, 24),
+            ...fadeUp(frame, reviewersAt + i * 5, 22),
           }}
         >
           Reviewer {i + 1}
@@ -282,7 +295,7 @@ const PhaseCollusion: React.FC<{frame: number; start: number}> = ({frame, start}
             strokeWidth={2.5}
             pathLength={1}
             strokeDasharray="1 1"
-            strokeDashoffset={1 - prog(frame, orchAt + i * 4, 20)}
+            strokeDashoffset={1 - prog(frame, routeAt + i * 4, 20)}
           />
         ))}
         <line
@@ -326,6 +339,7 @@ const PhaseCollusion: React.FC<{frame: number; start: number}> = ({frame, start}
         }}
       >
         <Eyebrow style={{color: colors.text, whiteSpace: 'nowrap'}}>Orchestrator log</Eyebrow>
+        <div style={{fontSize: type.caption, color: colors.muted, marginTop: 4}}>the central controller</div>
         <div style={{position: 'relative', height: LOG_LINE * LOG_VISIBLE, overflow: 'hidden', marginTop: 14}}>
           <div style={{transform: `translateY(${-scroll * LOG_LINE}px)`}}>
             {LOG.map((l, i) => {
@@ -359,7 +373,7 @@ const PhaseCollusion: React.FC<{frame: number; start: number}> = ({frame, start}
           top: ORCH.bottom + 14,
           fontSize: type.caption,
           color: colors.accent,
-          ...fadeUp(frame, auditAt + 10, 20, 6),
+          ...fadeUp(frame, auditAt, 20, 6),
         }}
       >
         audit: odd phrasing, repeated patterns
@@ -387,12 +401,12 @@ const PhaseCollusion: React.FC<{frame: number; start: number}> = ({frame, start}
             fontSize: 30,
             marginTop: 12,
             color: colors.muted,
-            textDecoration: frame > paraAt + 30 ? 'line-through' : 'none',
+            textDecoration: frame > rewriteAt ? 'line-through' : 'none',
           }}
         >
           "LGTM 3-3-1, ship it"
         </div>
-        <div style={{fontSize: 34, marginTop: 10, ...fadeUp(frame, paraAt + 36, 20, 8)}}>
+        <div style={{fontSize: 34, marginTop: 10, ...fadeUp(frame, rewriteAt, 20, 8)}}>
           → "Reviewer approves the change."
         </div>
       </div>
@@ -424,70 +438,83 @@ const PhaseCollusion: React.FC<{frame: number; start: number}> = ({frame, start}
 
 /* ---------- Phase C: quieter failure modes ---------- */
 
-const FAILURES = [
-  {name: 'Rubber-stamping', check: 'Count real issues raised per reviewer'},
-  {name: 'Sandbagging', check: 'Realistic prompts, compared with normal runs'},
-  {name: 'Pushing past caps', check: 'Caps enforced by the orchestrator, not the agents'},
-  {name: 'Prompt injection', check: 'Reviewed files treated as data, never instructions'},
-  {name: 'Noisy results', check: 'Repeat key runs; count only gains that hold'},
-  {name: 'Getting stuck', check: 'Stop a generation that repeats without progress'},
+// `at`: the narration that walks through this check.
+const FAILURES: {name: string; check: string; at: string}[] = [
+  {name: 'Rubber-stamping', check: 'Count the real issues each reviewer raises', at: 'Reviewers that approve everything'},
+  {name: 'Pushing past caps', check: 'Token and time caps enforced by the orchestrator', at: 'Token and time caps are enforced'},
+  {name: 'Hidden instructions', check: 'Text in the files under review is checked, never obeyed', at: 'Instructions hidden in the files'},
 ];
 
-const PhaseFailures: React.FC<{frame: number; start: number}> = ({frame, start}) => (
-  <>
-    <Heading eyebrow="Each one gets a specific check" title="Quieter failures" frame={frame} start={start} />
-    {FAILURES.map((f, i) => {
-      const col = i % 3;
-      const row = Math.floor(i / 3);
-      const at = start + 18 + i * 30;
-      return (
-        <div
-          key={f.name}
-          style={{
-            position: 'absolute',
-            left: 120 + col * 570,
-            top: 280 + row * 320,
-            width: 540,
-            height: 290,
-            boxSizing: 'border-box',
-            padding: '28px 30px',
-            borderRadius: 14,
-            border: `2px solid ${colors.line}`,
-            backgroundColor: colors.panel,
-            ...fadeUp(frame, at, 24),
-          }}
-        >
-          <div style={{fontFamily: fonts.mono, fontSize: type.caption, color: colors.accent}}>0{i + 1}</div>
-          <div style={{fontSize: type.body, fontWeight: 600, marginTop: 10}}>{f.name}</div>
-          <div style={{height: 2, backgroundColor: colors.line, margin: '20px 0'}} />
-          <div style={{fontSize: type.small, color: colors.muted, lineHeight: 1.35}}>{f.check}</div>
-        </div>
-      );
-    })}
-  </>
-);
+const PhaseFailures: React.FC<{frame: number; start: number}> = ({frame, start}) => {
+  const ats = FAILURES.map((f) => cue(f.at));
+  return (
+    <>
+      <Heading eyebrow="Each one gets its own check" title="Quieter failures" frame={frame} start={start} />
+      {FAILURES.map((f, i) => {
+        const active = frame >= ats[i] && (i === FAILURES.length - 1 || frame < ats[i + 1]);
+        return (
+          <div
+            key={f.name}
+            style={{
+              position: 'absolute',
+              left: 120 + i * 570,
+              top: 320,
+              width: 540,
+              height: 360,
+              boxSizing: 'border-box',
+              padding: '28px 30px',
+              borderRadius: 14,
+              border: `2px solid ${active ? colors.accent : colors.line}`,
+              backgroundColor: colors.panel,
+              ...fadeUp(frame, ats[i], 24),
+            }}
+          >
+            <div style={{fontFamily: fonts.mono, fontSize: type.caption, color: colors.accent}}>0{i + 1}</div>
+            <div style={{fontSize: type.body, fontWeight: 600, marginTop: 10}}>{f.name}</div>
+            <div style={{height: 2, backgroundColor: colors.line, margin: '20px 0'}} />
+            <div style={{fontSize: type.small, color: active ? colors.text : colors.muted, lineHeight: 1.35}}>{f.check}</div>
+          </div>
+        );
+      })}
+    </>
+  );
+};
 
-export const Scene06Gaming: React.FC = () => {
+export const Scene10Gaming: React.FC = () => {
   const frame = useCurrentFrame();
+  const guardAt = cue("The experiment hasn't run yet");
+  const aAt = cue('A branch jumps');
   const bAt = cue('Collusion is harder to see');
   const cAt = cue('Some failures are quieter');
-  const aOut = prog(frame, bAt - 12, 18);
-  const bOut = prog(frame, cAt - 12, 18);
+  const aOut = prog(frame, bAt - 16, 22);
+  const bOut = prog(frame, cAt - 16, 22);
 
   return (
-    <SceneFrame sceneId="s06">
-      {aOut < 1 && (
-        <div style={{position: 'absolute', inset: 0, opacity: 1 - aOut}}>
+    <SceneFrame sceneId="s10">
+      <PartMarker part={2} frame={frame} />
+      <Tag style={{...fadeUp(frame, guardAt, 20)}}>GUARDED AGAINST · NOT YET SEEN</Tag>
+      {/* Opening: the risk, and that it hasn't been seen */}
+      <div style={{position: 'absolute', inset: 0, opacity: phase(frame, 0, aAt)}}>
+        <Heading eyebrow="Agents rewarded for winning" title="may try to game the score" frame={frame} start={0} />
+        <div style={{position: 'absolute', left: 120, top: 420, width: 1680, ...fadeUp(frame, guardAt, 24)}}>
+          <div style={{fontSize: type.heading, fontWeight: 600}}>The experiment hasn't run yet.</div>
+          <div style={{fontSize: type.body, color: colors.muted, marginTop: 20, ...fadeUp(frame, cue('so this is something we guard against'), 20)}}>
+            Something we guard against and test for, <span style={{color: colors.accent}}>not something we've seen.</span>
+          </div>
+        </div>
+      </div>
+      {frame >= aAt - 10 && aOut < 1 && (
+        <div style={{position: 'absolute', inset: 0, opacity: (1 - aOut) * prog(frame, aAt - 8, 16)}}>
           <PhaseGaming frame={frame} />
           <Caption>Illustrative example.</Caption>
         </div>
       )}
-      {frame >= bAt - 6 && bOut < 1 && (
+      {frame >= bAt - 10 && bOut < 1 && (
         <div style={{position: 'absolute', inset: 0, opacity: 1 - bOut}}>
           <PhaseCollusion frame={frame} start={bAt} />
         </div>
       )}
-      {frame >= cAt - 6 && <PhaseFailures frame={frame} start={cAt} />}
+      {frame >= cAt - 10 && <PhaseFailures frame={frame} start={cAt} />}
     </SceneFrame>
   );
 };

@@ -5,10 +5,11 @@
   "description": "Explainer video for the Evolving Review Councils experiment, built with Remotion",
   "scripts": {
     "dev": "remotion studio",
-    "render": "remotion render Explainer out/explainer.mp4",
+    "render": "node -e \"if(require('fs').existsSync('public/audio/DRAFT.txt')){console.error('Draft narration in public/audio (see DRAFT.txt). Record the lines and re-run npm run voiceover.');process.exit(1)}\" && remotion render Explainer out/explainer.mp4",
     "still": "remotion still",
     "typecheck": "tsc --noEmit",
-    "voiceover": "node scripts/normalize-voiceover.mjs && node scripts/align-voiceover.mjs"
+    "voiceover": "node scripts/normalize-voiceover.mjs --no-pauses && node scripts/align-voiceover.mjs && node scripts/plan-pauses.mjs && node scripts/normalize-voiceover.mjs && node scripts/align-voiceover.mjs",
+    "voiceover:draft": "node scripts/normalize-voiceover.mjs --draft --no-pauses && node scripts/align-voiceover.mjs && node scripts/plan-pauses.mjs && node scripts/normalize-voiceover.mjs --draft && node scripts/align-voiceover.mjs"
   },
   "dependencies": {
     "@remotion/cli": "4.0.535",

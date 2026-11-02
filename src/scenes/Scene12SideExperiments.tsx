@@ -2,11 +2,12 @@ import React from 'react';
 import {useCurrentFrame} from 'remotion';
 import {Caption, Eyebrow, SceneFrame} from '../components/SceneFrame';
 import {Chip, Lines} from '../components/Tree';
+import {Card, Tag, phase} from '../components/Kit';
 import {fadeUp, mix, prog} from '../anim';
 import {colors, fonts, type} from '../theme';
 import {makeCue} from '../timing';
 
-const cue = makeCue('s08');
+const cue = makeCue('s12');
 
 /* ---------- Phase A: knockout tournament vs a varied team ---------- */
 
@@ -15,13 +16,15 @@ const BOX_H = 56;
 const COL_X = [120, 400, 680, 960];
 const TOP = 330;
 const STEP = 76;
-// Index of the winner within each pair, per round. Illustrative.
+// Who is still in after each round. Illustrative.
 const ROUNDS = [
   ['R1', 'R2', 'R3', 'R4', 'R5', 'R6', 'R7', 'R8'],
   ['R2', 'R3', 'R5', 'R8'],
   ['R3', 'R5'],
   ['R5'],
 ];
+// Generalist (G) or specialist (S): both kinds enter the same bracket.
+const KIND: Record<string, string> = {R1: 'G', R2: 'S', R3: 'S', R4: 'G', R5: 'G', R6: 'S', R7: 'G', R8: 'S'};
 const rowY = (round: number, i: number) => {
   const span = 2 ** round;
   return TOP + STEP * (i * span + (span - 1) / 2);
@@ -29,6 +32,7 @@ const rowY = (round: number, i: number) => {
 
 const Bracket: React.FC<{frame: number}> = ({frame}) => {
   const startAt = cue('In a knockout tournament');
+  const kindAt = cue('Generalists and specialists enter');
   const roundAt = [
     startAt,
     cue('eliminated round by round'),
@@ -91,6 +95,9 @@ const Bracket: React.FC<{frame: number}> = ({frame}) => {
               }}
             >
               {name}
+              <span style={{marginLeft: 12, color: KIND[name] === 'S' ? colors.accent : colors.muted, opacity: prog(frame, kindAt, 16)}}>
+                {KIND[name]}
+              </span>
             </div>
           );
         }),
@@ -107,62 +114,6 @@ const Bracket: React.FC<{frame: number}> = ({frame}) => {
   );
 };
 
-const VARIED = ['Opus · security', 'Sonnet · bugs', 'Opus · risky changes', 'Sonnet · efficiency'];
-
-const Comparison: React.FC<{frame: number}> = ({frame}) => {
-  const at = cue('The single winner is then compared');
-  const teamAt = cue('compared with a varied team');
-  return (
-    <div style={{position: 'absolute', left: 1260, top: 254, width: 540}}>
-      <div style={{...fadeUp(frame, at, 24)}}>
-        <Eyebrow>Compared on hard tests</Eyebrow>
-        <div
-          style={{
-            marginTop: 16,
-            padding: '16px 22px',
-            borderRadius: 12,
-            border: `2px solid ${colors.accent}`,
-            backgroundColor: colors.panel,
-          }}
-        >
-          <div style={{fontSize: type.small, fontWeight: 600}}>1 tournament winner</div>
-          <div style={{fontFamily: fonts.mono, fontSize: type.caption, color: colors.accent, marginTop: 4}}>R5</div>
-        </div>
-      </div>
-      <div style={{fontSize: type.small, color: colors.muted, margin: '18px 0', ...fadeUp(frame, teamAt, 20)}}>vs</div>
-      <div
-        style={{
-          padding: '16px 22px',
-          borderRadius: 12,
-          border: `2px solid ${colors.line}`,
-          backgroundColor: colors.panel,
-          ...fadeUp(frame, teamAt, 24),
-        }}
-      >
-        <div style={{fontSize: type.small, fontWeight: 600}}>A varied team</div>
-        <div style={{display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 14}}>
-          {VARIED.map((v, i) => (
-            <Chip key={v} style={{opacity: prog(frame, teamAt + 10 + i * 5, 16)}}>
-              {v}
-            </Chip>
-          ))}
-        </div>
-      </div>
-      <div
-        style={{
-          fontSize: type.caption,
-          color: colors.muted,
-          marginTop: 16,
-          lineHeight: 1.35,
-          ...fadeUp(frame, cue('since earlier research suggests'), 20),
-        }}
-      >
-        Earlier research: mixing models and prompts keeps paying off where identical reviewers stall.
-      </div>
-    </div>
-  );
-};
-
 const PhaseTournament: React.FC<{frame: number}> = ({frame}) => (
   <>
     <div style={{position: 'absolute', left: 120, top: 84, ...fadeUp(frame, 0, 30)}}>
@@ -170,21 +121,18 @@ const PhaseTournament: React.FC<{frame: number}> = ({frame}) => (
       <div style={{fontSize: type.heading, fontWeight: 600, marginTop: 6}}>Knockout tournament</div>
     </div>
     <Bracket frame={frame} />
-    <div
-      style={{
-        position: 'absolute',
-        left: COL_X[3],
-        top: 650,
-        width: 240,
-        lineHeight: 1.35,
-        fontSize: type.caption,
-        color: colors.accent,
-        ...fadeUp(frame, cue('The hard tests decide each round'), 20, 6),
-      }}
-    >
-      Each round decided by the hard tests, not votes
+    <div style={{position: 'absolute', left: 1260, top: 330, width: 540, ...fadeUp(frame, cue('Generalists and specialists enter'), 24)}}>
+      <Eyebrow>One bracket</Eyebrow>
+      <div style={{fontSize: type.small, marginTop: 14}}>
+        <span style={{fontFamily: fonts.mono, color: colors.muted}}>G</span> generalists
+      </div>
+      <div style={{fontSize: type.small, marginTop: 8}}>
+        <span style={{fontFamily: fonts.mono, color: colors.accent}}>S</span> specialists
+      </div>
+      <div style={{fontSize: type.caption, color: colors.muted, marginTop: 24, lineHeight: 1.35, ...fadeUp(frame, cue('which hints at whether'), 20)}}>
+        a hint at whether specialising pays
+      </div>
     </div>
-    <Comparison frame={frame} />
   </>
 );
 
@@ -194,9 +142,9 @@ const CELL_W = 400;
 const CELL_H = 220;
 const GRID = {left: 1000, top: 360};
 const CELLS = [
-  {row: 0, col: 0, a: 'share', b: 'share', at: 'If both split'},
-  {row: 0, col: 1, a: '0', b: 'all', at: 'If one steals'},
-  {row: 1, col: 0, a: 'all', b: '0', at: 'If one steals'},
+  {row: 0, col: 0, a: '50', b: '50', at: 'If both split'},
+  {row: 0, col: 1, a: '0', b: '100', at: 'If one steals'},
+  {row: 1, col: 0, a: '100', b: '0', at: 'If one steals'},
   {row: 1, col: 1, a: '0', b: '0', at: 'If both steal'},
 ];
 
@@ -227,7 +175,8 @@ const Finalist: React.FC<{label: string; x: number; frame: number; start: number
 const PhaseSplitSteal: React.FC<{frame: number; start: number}> = ({frame, start}) => {
   const talkAt = cue('They talk');
   const secretAt = cue('each secretly chooses');
-  const asideAt = cue("It doesn't affect the review result");
+  const potAt = cue('for a pot of points');
+  const asideAt = cue('If both steal', 1.4);
   const measuresAt = cue('It measures cooperation and trust');
   return (
     <>
@@ -241,11 +190,11 @@ const PhaseSplitSteal: React.FC<{frame: number; start: number}> = ({frame, start
 
       {/* They talk */}
       {[
-        {text: 'I plan to split.', left: 120, at: talkAt},
-        {text: 'Same here.', left: 540, at: talkAt + 20},
+        {text: '· · ·', left: 120, at: talkAt},
+        {text: '· · ·', left: 540, at: talkAt + 20},
       ].map((m) => (
         <div
-          key={m.text}
+          key={m.left}
           style={{
             position: 'absolute',
             left: m.left,
@@ -257,7 +206,7 @@ const PhaseSplitSteal: React.FC<{frame: number; start: number}> = ({frame, start
             ...fadeUp(frame, m.at, 20),
           }}
         >
-          “{m.text}”
+          {m.text}
         </div>
       ))}
 
@@ -285,6 +234,23 @@ const PhaseSplitSteal: React.FC<{frame: number; start: number}> = ({frame, start
           <div style={{fontSize: type.caption, color: colors.muted}}>sealed choice</div>
         </div>
       ))}
+
+      {/* The pot */}
+      <div
+        style={{
+          position: 'absolute',
+          left: GRID.left,
+          top: 200,
+          display: 'flex',
+          alignItems: 'baseline',
+          gap: 16,
+          ...fadeUp(frame, potAt, 20),
+        }}
+      >
+        <Eyebrow>Pot</Eyebrow>
+        <span style={{fontSize: 56, fontWeight: 600, color: colors.accent}}>100</span>
+        <span style={{fontSize: type.small, color: colors.muted}}>points</span>
+      </div>
 
       {/* Payoff matrix */}
       <div style={{position: 'absolute', left: GRID.left, top: GRID.top - 60, width: CELL_W * 2, display: 'flex', ...fadeUp(frame, start + 10, 24)}}>
@@ -333,10 +299,10 @@ const PhaseSplitSteal: React.FC<{frame: number; start: number}> = ({frame, start
             }}
           >
             <div style={{fontFamily: fonts.mono, fontSize: type.small, color: lit > 0.5 ? colors.text : colors.muted}}>
-              R3: {c.a}
+              R3: {c.a} pts
             </div>
             <div style={{fontFamily: fonts.mono, fontSize: type.small, color: lit > 0.5 ? colors.text : colors.muted}}>
-              R5: {c.b}
+              R5: {c.b} pts
             </div>
           </div>
         );
@@ -344,32 +310,85 @@ const PhaseSplitSteal: React.FC<{frame: number; start: number}> = ({frame, start
 
       <div style={{position: 'absolute', left: 120, top: 780, width: 720}}>
         <div style={{fontSize: type.caption, color: colors.muted, ...fadeUp(frame, asideAt, 20, 6)}}>
-          Doesn't change the review result. The hard tests already decided that.
+          Doesn't change the review result. The fixed tests already decided that.
         </div>
         <div style={{fontSize: type.small, color: colors.accent, marginTop: 14, ...fadeUp(frame, measuresAt, 20, 6)}}>
           Measures cooperation, betrayal and trust
         </div>
       </div>
       <Caption style={{opacity: prog(frame, cue('They talk', 1.5), 20)}}>
-        Varied: the models, and whether agents know the game repeats.
+        Example pot of 100 points. Varied: the models, and whether agents know the game repeats.
       </Caption>
     </>
   );
 };
 
-export const Scene08SideExperiments: React.FC = () => {
+/* ---------- Phase C: the winner against a team of different models ---------- */
+
+const PhaseTeam: React.FC<{frame: number; start: number}> = ({frame, start}) => {
+  const sideAt = cue("It's only a side experiment");
+  const realAt = cue('so the fair, same-budget tests');
+  return (
+    <>
+      <div style={{position: 'absolute', left: 120, top: 84, ...fadeUp(frame, start, 30)}}>
+        <Eyebrow>Finally</Eyebrow>
+        <div style={{fontSize: type.heading, fontWeight: 600, marginTop: 6}}>The winner vs a team of different models</div>
+      </div>
+      <div style={{position: 'absolute', left: 120, top: 330, display: 'flex', alignItems: 'center', gap: 36, ...fadeUp(frame, start + 8, 24)}}>
+        <Card accent style={{position: 'relative', width: 520, height: 220}}>
+          <Eyebrow style={{color: colors.accent}}>Tournament winner</Eyebrow>
+          <div style={{fontSize: type.body, fontWeight: 600, marginTop: 16}}>1 reviewer</div>
+        </Card>
+        <div style={{fontSize: type.body, color: colors.muted}}>vs</div>
+        <Card style={{position: 'relative', width: 780, height: 220}}>
+          <Eyebrow>A team</Eyebrow>
+          <div style={{display: 'flex', gap: 12, marginTop: 20}}>
+            {['Model A', 'Model B', 'Model C'].map((m) => (
+              <Chip key={m}>{m}</Chip>
+            ))}
+          </div>
+        </Card>
+      </div>
+      <div style={{position: 'absolute', left: 120, top: 640, ...fadeUp(frame, sideAt, 20, 8)}}>
+        <div style={{fontSize: type.body}}>
+          A knockout doesn't keep budgets equal.
+        </div>
+        <div style={{fontSize: type.body, color: colors.accent, marginTop: 18, ...fadeUp(frame, realAt, 20)}}>
+          The real answer: the same-budget tests from Question 1.
+        </div>
+      </div>
+      <Tag style={{left: 120, right: 'auto', top: 236, opacity: prog(frame, sideAt, 20)}}>SIDE EXPERIMENT · COST NOT MATCHED</Tag>
+    </>
+  );
+};
+
+export const Scene12SideExperiments: React.FC = () => {
   const frame = useCurrentFrame();
   const bAt = cue('The two finalists then play Split or Steal');
+  const cAt = cue('Finally, the tournament winner');
   const aOut = prog(frame, bAt - 12, 18);
   return (
-    <SceneFrame sceneId="s08">
+    <SceneFrame sceneId="s12">
+      {/* The whole scene is labelled as side experiments. */}
+      <div style={{position: 'absolute', right: 120, top: 40, fontFamily: fonts.mono, fontSize: type.caption, letterSpacing: 3, color: colors.accent, opacity: prog(frame, 0, 24)}}>
+        SIDE EXPERIMENTS
+      </div>
       {aOut < 1 && (
         <div style={{position: 'absolute', inset: 0, opacity: 1 - aOut}}>
           <PhaseTournament frame={frame} />
           <Caption>Illustrative bracket.</Caption>
         </div>
       )}
-      {frame >= bAt - 6 && <PhaseSplitSteal frame={frame} start={bAt} />}
+      {frame >= bAt - 6 && frame < cAt + 10 && (
+        <div style={{position: 'absolute', inset: 0, opacity: phase(frame, bAt, cAt)}}>
+          <PhaseSplitSteal frame={frame} start={bAt} />
+        </div>
+      )}
+      {frame >= cAt - 10 && (
+        <div style={{position: 'absolute', inset: 0, opacity: phase(frame, cAt)}}>
+          <PhaseTeam frame={frame} start={cAt} />
+        </div>
+      )}
     </SceneFrame>
   );
 };

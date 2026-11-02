@@ -119,10 +119,8 @@ const align = (text, file) => {
 };
 
 const result = {};
-for (let n = 1; n <= 10; n++) {
-  const id = `s${String(n).padStart(2, '0')}`;
-  const file = `audio/scene${String(n).padStart(2, '0')}.mp3`;
-  if (!narration[id]) throw new Error(`No narration for ${id} in script.md`);
+for (const id of Object.keys(narration).sort()) {
+  const file = `audio/scene${id.slice(1)}.mp3`;
   const a = align(narration[id], `public/${file}`);
   result[id] = {file, seconds: a.seconds, words: a.words};
   console.log(`${id}: ${a.seconds.toFixed(1)}s, ${a.words.length} words, ${a.anchors} of ${a.pauses} pauses anchored`);

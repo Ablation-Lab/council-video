@@ -8,16 +8,37 @@ The experiment plan, pilot write-up and related docs are in [ablation-lab/evolvi
 
 | Scene | Component | State |
 |---|---|---|
-| 01 The finding | `src/scenes/Scene01Finding.tsx` | built |
-| 02 More isn't free | `src/scenes/Scene02MoreIsntFree.tsx` | built |
-| 03 How the council evolves | `src/scenes/Scene03Evolution.tsx` | built |
-| 04 Size depends on the task | `src/scenes/Scene04SizeByTask.tsx` | built |
-| 05 Keeping it fair | `src/scenes/Scene05Fairness.tsx` | built |
-| 06 Cheating, collusion and failure modes | `src/scenes/Scene06Gaming.tsx` | built |
-| 07 What the WinScope pilot showed | `src/scenes/Scene07Pilot.tsx` | built |
-| 08 Side experiments | `src/scenes/Scene08SideExperiments.tsx` | built |
-| 09 Beyond code: accents | `src/scenes/Scene09Accents.tsx` | built |
-| 10 The calculator, and what gets published | `src/scenes/Scene10Calculator.tsx` | built |
+| 01 The spark | `src/scenes/Scene01Spark.tsx` | built |
+| 02 The big question | `src/scenes/Scene02BigQuestion.tsx` | built |
+| 03 A reviewer who didn't write the code | `src/scenes/Scene03FreshEyes.tsx` | built |
+| 04 Simpler fixes? | `src/scenes/Scene04SimplerFixes.tsx` | built |
+| 05 Different models, and marking your own homework | `src/scenes/Scene05Homework.tsx` | built |
+| 06 More isn't free | `src/scenes/Scene06MoreIsntFree.tsx` | built |
+| 07 Size depends on the task | `src/scenes/Scene07Size.tsx` | built |
+| 08 How the council evolves | `src/scenes/Scene08Evolution.tsx` | built |
+| 09 Keeping it fair | `src/scenes/Scene09Fairness.tsx` | built |
+| 10 Cheating, collusion and failure modes | `src/scenes/Scene10Gaming.tsx` | built |
+| 11 The two questions meet | `src/scenes/Scene11Meet.tsx` | built |
+| 12 Side experiments | `src/scenes/Scene12SideExperiments.tsx` | built |
+| 13 What a winning council looks like | `src/scenes/Scene13WinningCouncil.tsx` | built |
+| 14 The calculator | `src/scenes/Scene14Calculator.tsx` | built |
+| 15 Beyond code: accents | `src/scenes/Scene15Accents.tsx` | built |
+| 16 What's next | `src/scenes/Scene16WhatsNext.tsx` | built |
+
+## Research cited in the video
+
+On screen each citation shows a short title, author and year. Full references:
+
+- Ferreira, Liu & Zheng (2026, preprint). [Beyond Symmetric Agents: Cognitive Diversity and Multi-Agent Debate in Small Language Models](https://arxiv.org/abs/2609.35875). Scenes 2, 4 and 5.
+- Huang et al. (ICLR 2024). [Large Language Models Cannot Self-Correct Reasoning Yet](https://arxiv.org/abs/2310.01798). Scene 3.
+- Kim et al. (Google Research, 2025). [Towards a Science of Scaling Agent Systems](https://arxiv.org/abs/2512.08296). Scene 6 (the 2026 revision covers 260 setups).
+- Yang et al. (2026, preprint). [Understanding Agent Scaling in LLM-Based Multi-Agent Systems via Diversity](https://arxiv.org/abs/2602.03794). Scene 5.
+- Zheng et al. (Findings of EMNLP 2024). [When "A Helpful Assistant" Is Not Really Helpful: Personas in System Prompts Do Not Improve Performances of Large Language Models](https://arxiv.org/abs/2311.10054). Scene 8.
+- Smit et al. (ICML 2024). [Should We Be Going MAD? A Look at Multi-Agent Debate Strategies for LLMs](https://arxiv.org/abs/2311.17371). Scene 5.
+- Porter, Siy, Toman & Votta (IEEE TSE 1997). [An Experiment to Assess the Cost-Benefits of Code Inspections in Large Scale Software Development](https://doi.org/10.1109/32.601071). Scene 7. Section 3.6 of the full text (the authors' report, [UMD CS-TR-3760](https://drum.lib.umd.edu/bitstream/1903/885/2/CS-TR-3760.pdf)): two- and four-reviewer teams found defects equally well, and both did better than one reviewer.
+- Panickssery, Bowman & Feng (NeurIPS 2024). [LLM Evaluators Recognize and Favor Their Own Generations](https://arxiv.org/abs/2404.13076). Scenes 5 and 9.
+
+The formal experiment hasn't run. The video's only results are from the WinScope pilot and the pre-launch audit; everything else is a plan or a hypothesis.
 
 ## Preview
 
@@ -26,7 +47,7 @@ npm install
 npm run dev
 ```
 
-This opens Remotion Studio in your browser. The `Explainer` composition is the full film. `Scene01` to `Scene10` let you preview one scene at a time.
+This opens Remotion Studio in your browser. The `Explainer` composition is the full film. `Scene01` to `Scene16` let you preview one scene at a time.
 
 ## Project layout
 
@@ -39,7 +60,7 @@ This opens Remotion Studio in your browser. The `Explainer` composition is the f
 
 ## Voiceover
 
-The ElevenLabs originals are `scene01.mp3` to `scene10.mp3` in the project root (some are named `SceneNN.mp3`) and are never modified. To use new recordings, replace those files and run:
+The ElevenLabs originals are in the project root and are never modified: `scene01.mp3` to `scene11.mp3` (whole-scene takes from v2; `scene11.mp3` is the v2 Scene 10) and the line takes such as `scene01-intro.mp3`, `scene10a.mp3` or the v14 `r4-*.mp3` takes. `scripts/voiceover-edits.mjs` cuts all of these into the 16 scene clips. To rebuild the narration, run:
 
 ```
 npm run voiceover
@@ -47,8 +68,11 @@ npm run voiceover
 
 This needs a full ffmpeg on PATH. It does two things:
 
-1. `scripts/normalize-voiceover.mjs` writes loudness-normalised copies (-14 LUFS, peaks at or below about -1.5 dBFS) to `public/audio/sceneNN.mp3`. That's the audio the video plays.
+1. `scripts/normalize-voiceover.mjs` assembles each scene from the pieces listed in `scripts/voiceover-edits.mjs` (spans of the whole-scene takes plus new line takes, joined in the pauses), then writes loudness-normalised copies (-14 LUFS, peaks at or below about -1.5 dBFS, 20 ms fades at both ends) to `public/audio/sceneNN.mp3`. That's the audio the video plays. It checks that each scene's pieces say exactly what `script.md` says.
 2. `scripts/align-voiceover.mjs` finds the pauses in each clip, matches them to the punctuation in `script.md`, and writes per-word timings to `src/voiceover.json`. Scene lengths and every animation cue follow from those timings.
+3. Pacing: a first pass builds without extra pauses and aligns it; `scripts/plan-pauses.mjs` then plans silence to insert after full stops (to at least 0.5 s) and colons (0.35 s), writing `src/pauses.json`; the clips are rebuilt with those pauses and aligned again. Only silence is added; the voice is never time-stretched.
+
+To time a script change before recording it, put temporary stand-ins at `out/draft-lines/<line>.wav` and run `npm run voiceover:draft`. A draft build leaves `public/audio/DRAFT.txt`, and `npm run render` refuses to run until the real recordings replace it.
 
 If you change the wording, update [script.md](script.md) and the matching narration in `src/timing.ts`, then re-run it. `src/timing.ts` refuses to build if a recording's word count no longer matches its narration.
 
