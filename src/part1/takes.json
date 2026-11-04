@@ -1,0 +1,1390 @@
+{
+ "p1-01-built": {
+  "src": "audio/part1/p1-01-built.mp3",
+  "durationS": 8.986,
+  "words": [
+   {
+    "text": "After",
+    "startS": 0.08,
+    "endS": 0.34
+   },
+   {
+    "text": "a",
+    "startS": 0.34,
+    "endS": 0.52
+   },
+   {
+    "text": "coordinator",
+    "startS": 0.52,
+    "endS": 1
+   },
+   {
+    "text": "agent",
+    "startS": 1,
+    "endS": 1.44
+   },
+   {
+    "text": "laid",
+    "startS": 1.44,
+    "endS": 1.7
+   },
+   {
+    "text": "the",
+    "startS": 1.7,
+    "endS": 1.88
+   },
+   {
+    "text": "groundwork,",
+    "startS": 1.88,
+    "endS": 2.38
+   },
+   {
+    "text": "Four",
+    "startS": 2.92,
+    "endS": 3.3
+   },
+   {
+    "text": "AI",
+    "startS": 3.3,
+    "endS": 3.74
+   },
+   {
+    "text": "builders",
+    "startS": 3.74,
+    "endS": 4.12
+   },
+   {
+    "text": "wrote",
+    "startS": 4.12,
+    "endS": 4.5
+   },
+   {
+    "text": "most",
+    "startS": 4.5,
+    "endS": 4.88
+   },
+   {
+    "text": "of",
+    "startS": 4.88,
+    "endS": 5.04
+   },
+   {
+    "text": "a",
+    "startS": 5.04,
+    "endS": 5.14
+   },
+   {
+    "text": "Windows",
+    "startS": 5.14,
+    "endS": 5.46
+   },
+   {
+    "text": "app.",
+    "startS": 5.46,
+    "endS": 5.82
+   },
+   {
+    "text": "Windscope",
+    "startS": 6.22,
+    "endS": 6.72
+   },
+   {
+    "text": "in",
+    "startS": 6.72,
+    "endS": 7.2
+   },
+   {
+    "text": "about",
+    "startS": 7.2,
+    "endS": 7.42
+   },
+   {
+    "text": "33",
+    "startS": 7.42,
+    "endS": 8.14
+   },
+   {
+    "text": "minutes.",
+    "startS": 8.14,
+    "endS": 8.56
+   }
+  ],
+  "cuts": [
+   {
+    "afterWord": 0,
+    "cutS": 0.51,
+    "levelDb": -40
+   },
+   {
+    "afterWord": 1,
+    "cutS": 0.51,
+    "levelDb": -40
+   },
+   {
+    "afterWord": 2,
+    "cutS": 1.03,
+    "levelDb": -35
+   },
+   {
+    "afterWord": 3,
+    "cutS": 1.35,
+    "levelDb": -25
+   },
+   {
+    "afterWord": 4,
+    "cutS": 1.77,
+    "levelDb": -47
+   },
+   {
+    "afterWord": 5,
+    "cutS": 1.77,
+    "levelDb": -47
+   },
+   {
+    "afterWord": 6,
+    "cutS": 2.65,
+    "levelDb": -62
+   },
+   {
+    "afterWord": 7,
+    "cutS": 3.39,
+    "levelDb": -44
+   },
+   {
+    "afterWord": 8,
+    "cutS": 3.83,
+    "levelDb": -43
+   },
+   {
+    "afterWord": 9,
+    "cutS": 4.05,
+    "levelDb": -30
+   },
+   {
+    "afterWord": 10,
+    "cutS": 4.53,
+    "levelDb": -22
+   },
+   {
+    "afterWord": 11,
+    "cutS": 4.93,
+    "levelDb": -44
+   },
+   {
+    "afterWord": 12,
+    "cutS": 5.03,
+    "levelDb": -26
+   },
+   {
+    "afterWord": 13,
+    "cutS": 5.17,
+    "levelDb": -18
+   },
+   {
+    "afterWord": 14,
+    "cutS": 5.63,
+    "levelDb": -38
+   },
+   {
+    "afterWord": 15,
+    "cutS": 6.09,
+    "levelDb": -61
+   },
+   {
+    "afterWord": 16,
+    "cutS": 6.81,
+    "levelDb": -54
+   },
+   {
+    "afterWord": 17,
+    "cutS": 7.11,
+    "levelDb": -34
+   },
+   {
+    "afterWord": 18,
+    "cutS": 7.47,
+    "levelDb": -33
+   },
+   {
+    "afterWord": 19,
+    "cutS": 8.07,
+    "levelDb": -31
+   }
+  ]
+ },
+ "p1-01-reported": {
+  "src": "audio/part1/p1-01-reported.mp3",
+  "durationS": 10.998,
+  "words": [
+   {
+    "text": "Then,",
+    "startS": 0.04,
+    "endS": 0.42
+   },
+   {
+    "text": "over",
+    "startS": 0.74,
+    "endS": 0.92
+   },
+   {
+    "text": "four",
+    "startS": 0.92,
+    "endS": 1.3
+   },
+   {
+    "text": "review",
+    "startS": 1.3,
+    "endS": 1.66
+   },
+   {
+    "text": "rounds,",
+    "startS": 1.66,
+    "endS": 2.12
+   },
+   {
+    "text": "other",
+    "startS": 2.44,
+    "endS": 2.64
+   },
+   {
+    "text": "AI",
+    "startS": 2.64,
+    "endS": 3
+   },
+   {
+    "text": "reviewers",
+    "startS": 3,
+    "endS": 3.42
+   },
+   {
+    "text": "reported",
+    "startS": 3.42,
+    "endS": 4.04
+   },
+   {
+    "text": "97",
+    "startS": 4.04,
+    "endS": 4.94
+   },
+   {
+    "text": "problems.",
+    "startS": 4.94,
+    "endS": 5.6
+   },
+   {
+    "text": "Including",
+    "startS": 6.24,
+    "endS": 6.6
+   },
+   {
+    "text": "a",
+    "startS": 6.6,
+    "endS": 6.82
+   },
+   {
+    "text": "security",
+    "startS": 6.82,
+    "endS": 7.2
+   },
+   {
+    "text": "hole",
+    "startS": 7.2,
+    "endS": 7.66
+   },
+   {
+    "text": "in",
+    "startS": 7.66,
+    "endS": 7.9
+   },
+   {
+    "text": "code,",
+    "startS": 7.9,
+    "endS": 8.22
+   },
+   {
+    "text": "the",
+    "startS": 8.42,
+    "endS": 8.46
+   },
+   {
+    "text": "coordinator",
+    "startS": 8.46,
+    "endS": 8.94
+   },
+   {
+    "text": "had",
+    "startS": 8.94,
+    "endS": 9.28
+   },
+   {
+    "text": "already",
+    "startS": 9.28,
+    "endS": 9.74
+   },
+   {
+    "text": "checked",
+    "startS": 9.74,
+    "endS": 10.16
+   },
+   {
+    "text": "itself.",
+    "startS": 10.16,
+    "endS": 10.6
+   }
+  ],
+  "cuts": [
+   {
+    "afterWord": 0,
+    "cutS": 0.69,
+    "levelDb": -57
+   },
+   {
+    "afterWord": 1,
+    "cutS": 1.09,
+    "levelDb": -33
+   },
+   {
+    "afterWord": 2,
+    "cutS": 1.47,
+    "levelDb": -24
+   },
+   {
+    "afterWord": 3,
+    "cutS": 1.71,
+    "levelDb": -20
+   },
+   {
+    "afterWord": 4,
+    "cutS": 2.35,
+    "levelDb": -58
+   },
+   {
+    "afterWord": 5,
+    "cutS": 2.69,
+    "levelDb": -21
+   },
+   {
+    "afterWord": 6,
+    "cutS": 3.17,
+    "levelDb": -36
+   },
+   {
+    "afterWord": 7,
+    "cutS": 3.57,
+    "levelDb": -32
+   },
+   {
+    "afterWord": 8,
+    "cutS": 4.07,
+    "levelDb": -35
+   },
+   {
+    "afterWord": 9,
+    "cutS": 4.99,
+    "levelDb": -30
+   },
+   {
+    "afterWord": 10,
+    "cutS": 6.05,
+    "levelDb": -70
+   },
+   {
+    "afterWord": 11,
+    "cutS": 6.59,
+    "levelDb": -17
+   },
+   {
+    "afterWord": 12,
+    "cutS": 6.93,
+    "levelDb": -41
+   },
+   {
+    "afterWord": 13,
+    "cutS": 7.29,
+    "levelDb": -26
+   },
+   {
+    "afterWord": 14,
+    "cutS": 7.77,
+    "levelDb": -17
+   },
+   {
+    "afterWord": 15,
+    "cutS": 7.91,
+    "levelDb": -33
+   },
+   {
+    "afterWord": 16,
+    "cutS": 8.33,
+    "levelDb": -52
+   },
+   {
+    "afterWord": 17,
+    "cutS": 8.45,
+    "levelDb": -43
+   },
+   {
+    "afterWord": 18,
+    "cutS": 9.01,
+    "levelDb": -36
+   },
+   {
+    "afterWord": 19,
+    "cutS": 9.39,
+    "levelDb": -58
+   },
+   {
+    "afterWord": 20,
+    "cutS": 9.87,
+    "levelDb": -41
+   },
+   {
+    "afterWord": 21,
+    "cutS": 10.17,
+    "levelDb": -49
+   }
+  ]
+ },
+ "p1-02-hook": {
+  "src": "audio/part1/p1-02-hook.mp3",
+  "durationS": 3.971,
+  "words": [
+   {
+    "text": "So,",
+    "startS": 0.04,
+    "endS": 0.3
+   },
+   {
+    "text": "is",
+    "startS": 0.6,
+    "endS": 0.68
+   },
+   {
+    "text": "one",
+    "startS": 0.68,
+    "endS": 1.04
+   },
+   {
+    "text": "AI",
+    "startS": 1.04,
+    "endS": 1.58
+   },
+   {
+    "text": "agent",
+    "startS": 1.58,
+    "endS": 2.04
+   },
+   {
+    "text": "enough",
+    "startS": 2.04,
+    "endS": 2.54
+   },
+   {
+    "text": "to",
+    "startS": 2.54,
+    "endS": 2.82
+   },
+   {
+    "text": "check",
+    "startS": 2.82,
+    "endS": 3
+   },
+   {
+    "text": "its",
+    "startS": 3,
+    "endS": 3.18
+   },
+   {
+    "text": "own",
+    "startS": 3.18,
+    "endS": 3.36
+   },
+   {
+    "text": "work?",
+    "startS": 3.36,
+    "endS": 3.68
+   }
+  ],
+  "cuts": [
+   {
+    "afterWord": 0,
+    "cutS": 0.53,
+    "levelDb": -62
+   },
+   {
+    "afterWord": 1,
+    "cutS": 0.77,
+    "levelDb": -23
+   },
+   {
+    "afterWord": 2,
+    "cutS": 1.21,
+    "levelDb": -58
+   },
+   {
+    "afterWord": 3,
+    "cutS": 1.67,
+    "levelDb": -28
+   },
+   {
+    "afterWord": 4,
+    "cutS": 2.17,
+    "levelDb": -53
+   },
+   {
+    "afterWord": 5,
+    "cutS": 2.71,
+    "levelDb": -45
+   },
+   {
+    "afterWord": 6,
+    "cutS": 2.71,
+    "levelDb": -45
+   },
+   {
+    "afterWord": 7,
+    "cutS": 3.01,
+    "levelDb": -45
+   },
+   {
+    "afterWord": 8,
+    "cutS": 3.11,
+    "levelDb": -25
+   },
+   {
+    "afterWord": 9,
+    "cutS": 3.41,
+    "levelDb": -15
+   }
+  ]
+ },
+ "p1-03-lab": {
+  "src": "audio/part1/p1-03-lab.mp3",
+  "durationS": 10.919,
+  "words": [
+   {
+    "text": "This",
+    "startS": 0.04,
+    "endS": 0.3
+   },
+   {
+    "text": "is",
+    "startS": 0.3,
+    "endS": 0.56
+   },
+   {
+    "text": "Oblation",
+    "startS": 0.56,
+    "endS": 1.02
+   },
+   {
+    "text": "Lab.",
+    "startS": 1.02,
+    "endS": 1.32
+   },
+   {
+    "text": "where",
+    "startS": 1.76,
+    "endS": 1.88
+   },
+   {
+    "text": "we",
+    "startS": 1.88,
+    "endS": 2.02
+   },
+   {
+    "text": "test",
+    "startS": 2.02,
+    "endS": 2.32
+   },
+   {
+    "text": "AI",
+    "startS": 2.32,
+    "endS": 2.68
+   },
+   {
+    "text": "agents",
+    "startS": 2.68,
+    "endS": 3.08
+   },
+   {
+    "text": "with",
+    "startS": 3.08,
+    "endS": 3.4
+   },
+   {
+    "text": "controlled",
+    "startS": 3.4,
+    "endS": 3.9
+   },
+   {
+    "text": "experiments.",
+    "startS": 3.9,
+    "endS": 4.62
+   },
+   {
+    "text": "This",
+    "startS": 5.4,
+    "endS": 5.54
+   },
+   {
+    "text": "video",
+    "startS": 5.54,
+    "endS": 5.84
+   },
+   {
+    "text": "asks",
+    "startS": 5.84,
+    "endS": 6.24
+   },
+   {
+    "text": "whether",
+    "startS": 6.24,
+    "endS": 6.6
+   },
+   {
+    "text": "AI",
+    "startS": 6.6,
+    "endS": 7
+   },
+   {
+    "text": "agents",
+    "startS": 7,
+    "endS": 7.38
+   },
+   {
+    "text": "can",
+    "startS": 7.38,
+    "endS": 7.7
+   },
+   {
+    "text": "check",
+    "startS": 7.7,
+    "endS": 7.98
+   },
+   {
+    "text": "each",
+    "startS": 7.98,
+    "endS": 8.24
+   },
+   {
+    "text": "other's",
+    "startS": 8.24,
+    "endS": 8.5
+   },
+   {
+    "text": "work.",
+    "startS": 8.5,
+    "endS": 8.82
+   },
+   {
+    "text": "and",
+    "startS": 9.3,
+    "endS": 9.4
+   },
+   {
+    "text": "how",
+    "startS": 9.4,
+    "endS": 9.6
+   },
+   {
+    "text": "we",
+    "startS": 9.6,
+    "endS": 9.78
+   },
+   {
+    "text": "plan",
+    "startS": 9.78,
+    "endS": 9.96
+   },
+   {
+    "text": "to",
+    "startS": 9.96,
+    "endS": 10.16
+   },
+   {
+    "text": "find",
+    "startS": 10.16,
+    "endS": 10.36
+   },
+   {
+    "text": "out.",
+    "startS": 10.36,
+    "endS": 10.7
+   }
+  ],
+  "cuts": [
+   {
+    "afterWord": 0,
+    "cutS": 0.43,
+    "levelDb": -45
+   },
+   {
+    "afterWord": 1,
+    "cutS": 0.69,
+    "levelDb": -46
+   },
+   {
+    "afterWord": 2,
+    "cutS": 0.99,
+    "levelDb": -18
+   },
+   {
+    "afterWord": 3,
+    "cutS": 1.65,
+    "levelDb": -57
+   },
+   {
+    "afterWord": 4,
+    "cutS": 1.77,
+    "levelDb": -44
+   },
+   {
+    "afterWord": 5,
+    "cutS": 2.03,
+    "levelDb": -33
+   },
+   {
+    "afterWord": 6,
+    "cutS": 2.41,
+    "levelDb": -49
+   },
+   {
+    "afterWord": 7,
+    "cutS": 2.75,
+    "levelDb": -17
+   },
+   {
+    "afterWord": 8,
+    "cutS": 3.25,
+    "levelDb": -30
+   },
+   {
+    "afterWord": 9,
+    "cutS": 3.43,
+    "levelDb": -52
+   },
+   {
+    "afterWord": 10,
+    "cutS": 3.99,
+    "levelDb": -25
+   },
+   {
+    "afterWord": 11,
+    "cutS": 4.89,
+    "levelDb": -58
+   },
+   {
+    "afterWord": 12,
+    "cutS": 5.61,
+    "levelDb": -33
+   },
+   {
+    "afterWord": 13,
+    "cutS": 5.97,
+    "levelDb": -17
+   },
+   {
+    "afterWord": 14,
+    "cutS": 6.27,
+    "levelDb": -39
+   },
+   {
+    "afterWord": 15,
+    "cutS": 6.71,
+    "levelDb": -44
+   },
+   {
+    "afterWord": 16,
+    "cutS": 7.07,
+    "levelDb": -18
+   },
+   {
+    "afterWord": 17,
+    "cutS": 7.55,
+    "levelDb": -51
+   },
+   {
+    "afterWord": 18,
+    "cutS": 7.61,
+    "levelDb": -28
+   },
+   {
+    "afterWord": 19,
+    "cutS": 7.99,
+    "levelDb": -42
+   },
+   {
+    "afterWord": 20,
+    "cutS": 8.15,
+    "levelDb": -35
+   },
+   {
+    "afterWord": 21,
+    "cutS": 8.51,
+    "levelDb": -30
+   },
+   {
+    "afterWord": 22,
+    "cutS": 9.25,
+    "levelDb": -51
+   },
+   {
+    "afterWord": 23,
+    "cutS": 9.31,
+    "levelDb": -26
+   },
+   {
+    "afterWord": 24,
+    "cutS": 9.77,
+    "levelDb": -41
+   },
+   {
+    "afterWord": 25,
+    "cutS": 9.77,
+    "levelDb": -41
+   },
+   {
+    "afterWord": 26,
+    "cutS": 10.13,
+    "levelDb": -30
+   },
+   {
+    "afterWord": 27,
+    "cutS": 10.21,
+    "levelDb": -34
+   },
+   {
+    "afterWord": 28,
+    "cutS": 10.53,
+    "levelDb": -16
+   }
+  ]
+ },
+ "p1-04-code": {
+  "src": "audio/part1/p1-04-code.mp3",
+  "durationS": 7.001,
+  "words": [
+   {
+    "text": "and",
+    "startS": 0.1,
+    "endS": 0.26
+   },
+   {
+    "text": "code,",
+    "startS": 0.26,
+    "endS": 0.66
+   },
+   {
+    "text": "which",
+    "startS": 0.98,
+    "endS": 1.16
+   },
+   {
+    "text": "is",
+    "startS": 1.16,
+    "endS": 1.26
+   },
+   {
+    "text": "what",
+    "startS": 1.26,
+    "endS": 1.4
+   },
+   {
+    "text": "we're",
+    "startS": 1.4,
+    "endS": 1.56
+   },
+   {
+    "text": "testing,",
+    "startS": 1.56,
+    "endS": 1.98
+   },
+   {
+    "text": "because",
+    "startS": 2.44,
+    "endS": 2.7
+   },
+   {
+    "text": "you",
+    "startS": 2.7,
+    "endS": 2.82
+   },
+   {
+    "text": "can",
+    "startS": 2.82,
+    "endS": 2.98
+   },
+   {
+    "text": "plant",
+    "startS": 2.98,
+    "endS": 3.28
+   },
+   {
+    "text": "bugs",
+    "startS": 3.28,
+    "endS": 3.58
+   },
+   {
+    "text": "on",
+    "startS": 3.58,
+    "endS": 3.76
+   },
+   {
+    "text": "purpose",
+    "startS": 3.76,
+    "endS": 4.2
+   },
+   {
+    "text": "and",
+    "startS": 4.2,
+    "endS": 4.62
+   },
+   {
+    "text": "count",
+    "startS": 4.62,
+    "endS": 4.86
+   },
+   {
+    "text": "exactly",
+    "startS": 4.86,
+    "endS": 5.38
+   },
+   {
+    "text": "how",
+    "startS": 5.38,
+    "endS": 5.84
+   },
+   {
+    "text": "many",
+    "startS": 5.84,
+    "endS": 6.08
+   },
+   {
+    "text": "get",
+    "startS": 6.08,
+    "endS": 6.34
+   },
+   {
+    "text": "caught.",
+    "startS": 6.34,
+    "endS": 6.7
+   }
+  ],
+  "cuts": [
+   {
+    "afterWord": 0,
+    "cutS": 0.31,
+    "levelDb": -44
+   },
+   {
+    "afterWord": 1,
+    "cutS": 1.01,
+    "levelDb": -51
+   },
+   {
+    "afterWord": 2,
+    "cutS": 1.13,
+    "levelDb": -31
+   },
+   {
+    "afterWord": 3,
+    "cutS": 1.29,
+    "levelDb": -25
+   },
+   {
+    "afterWord": 4,
+    "cutS": 1.55,
+    "levelDb": -38
+   },
+   {
+    "afterWord": 5,
+    "cutS": 1.55,
+    "levelDb": -38
+   },
+   {
+    "afterWord": 6,
+    "cutS": 2.13,
+    "levelDb": -55
+   },
+   {
+    "afterWord": 7,
+    "cutS": 2.85,
+    "levelDb": -31
+   },
+   {
+    "afterWord": 8,
+    "cutS": 2.85,
+    "levelDb": -31
+   },
+   {
+    "afterWord": 9,
+    "cutS": 3.03,
+    "levelDb": -44
+   },
+   {
+    "afterWord": 10,
+    "cutS": 3.39,
+    "levelDb": -47
+   },
+   {
+    "afterWord": 11,
+    "cutS": 3.55,
+    "levelDb": -23
+   },
+   {
+    "afterWord": 12,
+    "cutS": 3.81,
+    "levelDb": -38
+   },
+   {
+    "afterWord": 13,
+    "cutS": 4.15,
+    "levelDb": -41
+   },
+   {
+    "afterWord": 14,
+    "cutS": 4.65,
+    "levelDb": -28
+   },
+   {
+    "afterWord": 15,
+    "cutS": 4.91,
+    "levelDb": -47
+   },
+   {
+    "afterWord": 16,
+    "cutS": 5.43,
+    "levelDb": -49
+   },
+   {
+    "afterWord": 17,
+    "cutS": 5.77,
+    "levelDb": -16
+   },
+   {
+    "afterWord": 18,
+    "cutS": 6.21,
+    "levelDb": -33
+   },
+   {
+    "afterWord": 19,
+    "cutS": 6.39,
+    "levelDb": -50
+   }
+  ]
+ },
+ "p1-04-kinds": {
+  "src": "audio/part1/p1-04-kinds.mp3",
+  "durationS": 12.278,
+  "words": [
+   {
+    "text": "AI",
+    "startS": 0.06,
+    "endS": 0.34
+   },
+   {
+    "text": "reviewers",
+    "startS": 0.34,
+    "endS": 0.82
+   },
+   {
+    "text": "can",
+    "startS": 0.82,
+    "endS": 1.1
+   },
+   {
+    "text": "check",
+    "startS": 1.1,
+    "endS": 1.38
+   },
+   {
+    "text": "documents.",
+    "startS": 1.38,
+    "endS": 1.88
+   },
+   {
+    "text": "A",
+    "startS": 2.72,
+    "endS": 2.84
+   },
+   {
+    "text": "separate",
+    "startS": 2.84,
+    "endS": 3.18
+   },
+   {
+    "text": "AI",
+    "startS": 3.18,
+    "endS": 3.6
+   },
+   {
+    "text": "caught",
+    "startS": 3.6,
+    "endS": 4
+   },
+   {
+    "text": "structural",
+    "startS": 4,
+    "endS": 4.58
+   },
+   {
+    "text": "problems",
+    "startS": 4.58,
+    "endS": 5.02
+   },
+   {
+    "text": "in",
+    "startS": 5.02,
+    "endS": 5.22
+   },
+   {
+    "text": "this",
+    "startS": 5.22,
+    "endS": 5.36
+   },
+   {
+    "text": "research",
+    "startS": 5.36,
+    "endS": 5.76
+   },
+   {
+    "text": "plan.",
+    "startS": 5.76,
+    "endS": 6.12
+   },
+   {
+    "text": "Videos",
+    "startS": 6.76,
+    "endS": 7.18
+   },
+   {
+    "text": "Our",
+    "startS": 7.96,
+    "endS": 8.1
+   },
+   {
+    "text": "video",
+    "startS": 8.1,
+    "endS": 8.44
+   },
+   {
+    "text": "review",
+    "startS": 8.44,
+    "endS": 8.8
+   },
+   {
+    "text": "tool",
+    "startS": 8.8,
+    "endS": 9.14
+   },
+   {
+    "text": "caught",
+    "startS": 9.14,
+    "endS": 9.44
+   },
+   {
+    "text": "a",
+    "startS": 9.44,
+    "endS": 9.72
+   },
+   {
+    "text": "blank",
+    "startS": 9.72,
+    "endS": 9.88
+   },
+   {
+    "text": "frame",
+    "startS": 9.88,
+    "endS": 10.32
+   },
+   {
+    "text": "in",
+    "startS": 10.32,
+    "endS": 10.56
+   },
+   {
+    "text": "an",
+    "startS": 10.56,
+    "endS": 10.68
+   },
+   {
+    "text": "earlier",
+    "startS": 10.68,
+    "endS": 11.02
+   },
+   {
+    "text": "cut",
+    "startS": 11.02,
+    "endS": 11.3
+   },
+   {
+    "text": "of",
+    "startS": 11.3,
+    "endS": 11.5
+   },
+   {
+    "text": "this",
+    "startS": 11.5,
+    "endS": 11.62
+   },
+   {
+    "text": "video.",
+    "startS": 11.62,
+    "endS": 11.98
+   }
+  ],
+  "cuts": [
+   {
+    "afterWord": 0,
+    "cutS": 0.51,
+    "levelDb": -14
+   },
+   {
+    "afterWord": 1,
+    "cutS": 0.97,
+    "levelDb": -44
+   },
+   {
+    "afterWord": 2,
+    "cutS": 1.03,
+    "levelDb": -26
+   },
+   {
+    "afterWord": 3,
+    "cutS": 1.47,
+    "levelDb": -50
+   },
+   {
+    "afterWord": 4,
+    "cutS": 2.29,
+    "levelDb": -60
+   },
+   {
+    "afterWord": 5,
+    "cutS": 2.73,
+    "levelDb": -18
+   },
+   {
+    "afterWord": 6,
+    "cutS": 3.23,
+    "levelDb": -36
+   },
+   {
+    "afterWord": 7,
+    "cutS": 3.77,
+    "levelDb": -46
+   },
+   {
+    "afterWord": 8,
+    "cutS": 4.03,
+    "levelDb": -31
+   },
+   {
+    "afterWord": 9,
+    "cutS": 4.67,
+    "levelDb": -39
+   },
+   {
+    "afterWord": 10,
+    "cutS": 5.09,
+    "levelDb": -18
+   },
+   {
+    "afterWord": 11,
+    "cutS": 5.39,
+    "levelDb": -33
+   },
+   {
+    "afterWord": 12,
+    "cutS": 5.41,
+    "levelDb": -33
+   },
+   {
+    "afterWord": 13,
+    "cutS": 5.87,
+    "levelDb": -54
+   },
+   {
+    "afterWord": 14,
+    "cutS": 6.53,
+    "levelDb": -65
+   },
+   {
+    "afterWord": 15,
+    "cutS": 7.73,
+    "levelDb": -61
+   },
+   {
+    "afterWord": 16,
+    "cutS": 8.15,
+    "levelDb": -28
+   },
+   {
+    "afterWord": 17,
+    "cutS": 8.61,
+    "levelDb": -16
+   },
+   {
+    "afterWord": 18,
+    "cutS": 8.89,
+    "levelDb": -29
+   },
+   {
+    "afterWord": 19,
+    "cutS": 9.23,
+    "levelDb": -50
+   },
+   {
+    "afterWord": 20,
+    "cutS": 9.61,
+    "levelDb": -50
+   },
+   {
+    "afterWord": 21,
+    "cutS": 9.65,
+    "levelDb": -46
+   },
+   {
+    "afterWord": 22,
+    "cutS": 10.01,
+    "levelDb": -24
+   },
+   {
+    "afterWord": 23,
+    "cutS": 10.47,
+    "levelDb": -17
+   },
+   {
+    "afterWord": 24,
+    "cutS": 10.71,
+    "levelDb": -28
+   },
+   {
+    "afterWord": 25,
+    "cutS": 10.71,
+    "levelDb": -28
+   },
+   {
+    "afterWord": 26,
+    "cutS": 11.09,
+    "levelDb": -47
+   },
+   {
+    "afterWord": 27,
+    "cutS": 11.33,
+    "levelDb": -40
+   },
+   {
+    "afterWord": 28,
+    "cutS": 11.67,
+    "levelDb": -39
+   },
+   {
+    "afterWord": 29,
+    "cutS": 11.69,
+    "levelDb": -36
+   }
+  ]
+ }
+}

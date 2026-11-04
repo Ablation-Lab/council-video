@@ -19,6 +19,7 @@ import {Scene14Calculator} from './scenes/Scene14Calculator';
 import {Scene15Accents} from './scenes/Scene15Accents';
 import {Scene16WhatsNext} from './scenes/Scene16WhatsNext';
 import {Teaser, teaserDurationInFrames} from './Teaser';
+import {Part1Section1, part1Section1DurationInFrames} from './part1/Section1Opening';
 import {FPS, SCENES, sceneDurationInFrames, totalDurationInFrames} from './timing';
 
 const WIDTH = 1920;
@@ -83,6 +84,15 @@ export const RemotionRoot: React.FC = () => (
       id="Teaser"
       component={Teaser}
       durationInFrames={teaserDurationInFrames}
+      fps={FPS}
+      width={WIDTH}
+      height={HEIGHT}
+    />
+    {/* Two-part rebuild, section by section. The compositions above are the v14b reference. */}
+    <Composition
+      id="Part1-Section1"
+      component={Part1Section1}
+      durationInFrames={part1Section1DurationInFrames}
       fps={FPS}
       width={WIDTH}
       height={HEIGHT}

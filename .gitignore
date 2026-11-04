@@ -38,3 +38,7 @@ public/audio/DRAFT.txt
 
 # v4 restructure line takes (same reason as above)
 /r4-*.mp3
+
+# Two-part rebuild line takes (same reason as above)
+/p1-*.mp3
+/p2-*.mp3
