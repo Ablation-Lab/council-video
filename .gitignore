@@ -31,7 +31,7 @@ Thumbs.db
 # Draft-build marker (temporary TTS in the narration)
 public/audio/DRAFT.txt
 
-# ElevenLabs line takes (the original scene takes, v3). Kept locally, not committed: they carry the
+# ElevenLabs line takes (the original scene takes, Eleven v4). Kept locally, not committed: they carry the
 # voice vendor's C2PA metadata. The normalised clips in public/audio are tracked.
 /scene[0-9][0-9]-*.mp3
 /scene10[ab].mp3
