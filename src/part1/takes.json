@@ -1,347 +1,217 @@
 {
  "p1-01-built": {
   "src": "audio/part1/p1-01-built.mp3",
-  "durationS": 8.986,
+  "durationS": 5.721,
   "words": [
    {
-    "text": "After",
+    "text": "A",
     "startS": 0.08,
-    "endS": 0.34
+    "endS": 0.2
    },
    {
-    "text": "a",
-    "startS": 0.34,
-    "endS": 0.52
+    "text": "team",
+    "startS": 0.2,
+    "endS": 0.42
    },
    {
-    "text": "coordinator",
-    "startS": 0.52,
+    "text": "of",
+    "startS": 0.42,
+    "endS": 0.58
+   },
+   {
+    "text": "AI",
+    "startS": 0.58,
     "endS": 1
    },
    {
-    "text": "agent",
+    "text": "agents",
     "startS": 1,
     "endS": 1.44
    },
    {
-    "text": "laid",
+    "text": "built",
     "startS": 1.44,
-    "endS": 1.7
-   },
-   {
-    "text": "the",
-    "startS": 1.7,
-    "endS": 1.88
-   },
-   {
-    "text": "groundwork,",
-    "startS": 1.88,
-    "endS": 2.38
-   },
-   {
-    "text": "Four",
-    "startS": 2.92,
-    "endS": 3.3
-   },
-   {
-    "text": "AI",
-    "startS": 3.3,
-    "endS": 3.74
-   },
-   {
-    "text": "builders",
-    "startS": 3.74,
-    "endS": 4.12
-   },
-   {
-    "text": "wrote",
-    "startS": 4.12,
-    "endS": 4.5
-   },
-   {
-    "text": "most",
-    "startS": 4.5,
-    "endS": 4.88
-   },
-   {
-    "text": "of",
-    "startS": 4.88,
-    "endS": 5.04
+    "endS": 1.72
    },
    {
     "text": "a",
-    "startS": 5.04,
-    "endS": 5.14
+    "startS": 1.72,
+    "endS": 1.92
    },
    {
     "text": "Windows",
-    "startS": 5.14,
-    "endS": 5.46
+    "startS": 1.92,
+    "endS": 2.26
    },
    {
     "text": "app.",
-    "startS": 5.46,
-    "endS": 5.82
+    "startS": 2.26,
+    "endS": 2.62
    },
    {
     "text": "Windscope",
-    "startS": 6.22,
-    "endS": 6.72
+    "startS": 3.02,
+    "endS": 3.5
    },
    {
     "text": "in",
-    "startS": 6.72,
-    "endS": 7.2
+    "startS": 3.5,
+    "endS": 3.98
    },
    {
     "text": "about",
-    "startS": 7.2,
-    "endS": 7.42
+    "startS": 3.98,
+    "endS": 4.22
    },
    {
     "text": "33",
-    "startS": 7.42,
-    "endS": 8.14
+    "startS": 4.22,
+    "endS": 4.94
    },
    {
     "text": "minutes.",
-    "startS": 8.14,
-    "endS": 8.56
+    "startS": 4.94,
+    "endS": 5.34
    }
   ],
   "cuts": [
    {
     "afterWord": 0,
-    "cutS": 0.51,
+    "cutS": 0.19,
     "levelDb": -40
    },
    {
     "afterWord": 1,
-    "cutS": 0.51,
-    "levelDb": -40
-   },
-   {
-    "afterWord": 2,
-    "cutS": 1.03,
-    "levelDb": -35
-   },
-   {
-    "afterWord": 3,
-    "cutS": 1.35,
-    "levelDb": -25
-   },
-   {
-    "afterWord": 4,
-    "cutS": 1.77,
-    "levelDb": -47
-   },
-   {
-    "afterWord": 5,
-    "cutS": 1.77,
-    "levelDb": -47
-   },
-   {
-    "afterWord": 6,
-    "cutS": 2.65,
-    "levelDb": -62
-   },
-   {
-    "afterWord": 7,
-    "cutS": 3.39,
-    "levelDb": -44
-   },
-   {
-    "afterWord": 8,
-    "cutS": 3.83,
-    "levelDb": -43
-   },
-   {
-    "afterWord": 9,
-    "cutS": 4.05,
-    "levelDb": -30
-   },
-   {
-    "afterWord": 10,
-    "cutS": 4.53,
-    "levelDb": -22
-   },
-   {
-    "afterWord": 11,
-    "cutS": 4.93,
-    "levelDb": -44
-   },
-   {
-    "afterWord": 12,
-    "cutS": 5.03,
+    "cutS": 0.59,
     "levelDb": -26
    },
    {
-    "afterWord": 13,
-    "cutS": 5.17,
-    "levelDb": -18
+    "afterWord": 2,
+    "cutS": 0.65,
+    "levelDb": -43
    },
    {
-    "afterWord": 14,
-    "cutS": 5.63,
-    "levelDb": -38
+    "afterWord": 3,
+    "cutS": 1.09,
+    "levelDb": -19
    },
    {
-    "afterWord": 15,
-    "cutS": 6.09,
-    "levelDb": -61
+    "afterWord": 4,
+    "cutS": 1.59,
+    "levelDb": -57
    },
    {
-    "afterWord": 16,
-    "cutS": 6.81,
-    "levelDb": -54
+    "afterWord": 5,
+    "cutS": 1.61,
+    "levelDb": -51
    },
    {
-    "afterWord": 17,
-    "cutS": 7.11,
-    "levelDb": -34
+    "afterWord": 6,
+    "cutS": 1.97,
+    "levelDb": -24
    },
    {
-    "afterWord": 18,
-    "cutS": 7.47,
-    "levelDb": -33
+    "afterWord": 7,
+    "cutS": 2.43,
+    "levelDb": -35
    },
    {
-    "afterWord": 19,
-    "cutS": 8.07,
+    "afterWord": 8,
+    "cutS": 2.91,
+    "levelDb": -57
+   },
+   {
+    "afterWord": 9,
+    "cutS": 3.61,
+    "levelDb": -57
+   },
+   {
+    "afterWord": 10,
+    "cutS": 3.89,
     "levelDb": -31
+   },
+   {
+    "afterWord": 11,
+    "cutS": 4.25,
+    "levelDb": -36
+   },
+   {
+    "afterWord": 12,
+    "cutS": 4.87,
+    "levelDb": -38
    }
   ]
  },
- "p1-01-reported": {
-  "src": "audio/part1/p1-01-reported.mp3",
-  "durationS": 10.998,
+ "p1-01-reported-a": {
+  "src": "audio/part1/p1-01-reported-a.mp3",
+  "durationS": 6.034,
   "words": [
    {
     "text": "Then,",
-    "startS": 0.04,
+    "startS": 0.06,
     "endS": 0.42
    },
    {
     "text": "over",
-    "startS": 0.74,
-    "endS": 0.92
+    "startS": 0.72,
+    "endS": 0.9
    },
    {
     "text": "four",
-    "startS": 0.92,
+    "startS": 0.9,
     "endS": 1.3
    },
    {
     "text": "review",
     "startS": 1.3,
-    "endS": 1.66
+    "endS": 1.68
    },
    {
     "text": "rounds,",
-    "startS": 1.66,
-    "endS": 2.12
+    "startS": 1.68,
+    "endS": 2.18
    },
    {
     "text": "other",
-    "startS": 2.44,
-    "endS": 2.64
+    "startS": 2.5,
+    "endS": 2.68
    },
    {
     "text": "AI",
-    "startS": 2.64,
-    "endS": 3
+    "startS": 2.68,
+    "endS": 3.04
    },
    {
     "text": "reviewers",
-    "startS": 3,
-    "endS": 3.42
+    "startS": 3.04,
+    "endS": 3.5
    },
    {
     "text": "reported",
-    "startS": 3.42,
-    "endS": 4.04
+    "startS": 3.5,
+    "endS": 4.08
    },
    {
     "text": "97",
-    "startS": 4.04,
-    "endS": 4.94
+    "startS": 4.08,
+    "endS": 5
    },
    {
     "text": "problems.",
-    "startS": 4.94,
-    "endS": 5.6
-   },
-   {
-    "text": "Including",
-    "startS": 6.24,
-    "endS": 6.6
-   },
-   {
-    "text": "a",
-    "startS": 6.6,
-    "endS": 6.82
-   },
-   {
-    "text": "security",
-    "startS": 6.82,
-    "endS": 7.2
-   },
-   {
-    "text": "hole",
-    "startS": 7.2,
-    "endS": 7.66
-   },
-   {
-    "text": "in",
-    "startS": 7.66,
-    "endS": 7.9
-   },
-   {
-    "text": "code,",
-    "startS": 7.9,
-    "endS": 8.22
-   },
-   {
-    "text": "the",
-    "startS": 8.42,
-    "endS": 8.46
-   },
-   {
-    "text": "coordinator",
-    "startS": 8.46,
-    "endS": 8.94
-   },
-   {
-    "text": "had",
-    "startS": 8.94,
-    "endS": 9.28
-   },
-   {
-    "text": "already",
-    "startS": 9.28,
-    "endS": 9.74
-   },
-   {
-    "text": "checked",
-    "startS": 9.74,
-    "endS": 10.16
-   },
-   {
-    "text": "itself.",
-    "startS": 10.16,
-    "endS": 10.6
+    "startS": 5,
+    "endS": 5.62
    }
   ],
   "cuts": [
    {
     "afterWord": 0,
-    "cutS": 0.69,
+    "cutS": 0.67,
     "levelDb": -57
    },
    {
     "afterWord": 1,
-    "cutS": 1.09,
-    "levelDb": -33
+    "cutS": 1.07,
+    "levelDb": -32
    },
    {
     "afterWord": 2,
@@ -350,98 +220,201 @@
    },
    {
     "afterWord": 3,
-    "cutS": 1.71,
-    "levelDb": -20
+    "cutS": 1.85,
+    "levelDb": -16
    },
    {
     "afterWord": 4,
-    "cutS": 2.35,
-    "levelDb": -58
+    "cutS": 2.43,
+    "levelDb": -61
    },
    {
     "afterWord": 5,
-    "cutS": 2.69,
+    "cutS": 2.61,
     "levelDb": -21
    },
    {
     "afterWord": 6,
-    "cutS": 3.17,
-    "levelDb": -36
-   },
-   {
-    "afterWord": 7,
-    "cutS": 3.57,
-    "levelDb": -32
-   },
-   {
-    "afterWord": 8,
-    "cutS": 4.07,
+    "cutS": 3.21,
     "levelDb": -35
    },
    {
+    "afterWord": 7,
+    "cutS": 3.63,
+    "levelDb": -34
+   },
+   {
+    "afterWord": 8,
+    "cutS": 4.13,
+    "levelDb": -42
+   },
+   {
     "afterWord": 9,
-    "cutS": 4.99,
-    "levelDb": -30
+    "cutS": 5.05,
+    "levelDb": -29
+   }
+  ]
+ },
+ "p1-01-reported-b": {
+  "src": "audio/part1/p1-01-reported-b.mp3",
+  "durationS": 6.034,
+  "words": [
+   {
+    "text": "including",
+    "startS": 0.06,
+    "endS": 0.42
    },
    {
-    "afterWord": 10,
-    "cutS": 6.05,
-    "levelDb": -70
+    "text": "a",
+    "startS": 0.42,
+    "endS": 0.66
    },
    {
-    "afterWord": 11,
-    "cutS": 6.59,
+    "text": "serious",
+    "startS": 0.66,
+    "endS": 1.16
+   },
+   {
+    "text": "security",
+    "startS": 1.16,
+    "endS": 1.64
+   },
+   {
+    "text": "flaw",
+    "startS": 1.64,
+    "endS": 2.16
+   },
+   {
+    "text": "that",
+    "startS": 2.16,
+    "endS": 2.42
+   },
+   {
+    "text": "the",
+    "startS": 2.42,
+    "endS": 2.54
+   },
+   {
+    "text": "AI",
+    "startS": 2.54,
+    "endS": 2.86
+   },
+   {
+    "text": "that",
+    "startS": 2.86,
+    "endS": 3.08
+   },
+   {
+    "text": "wrote",
+    "startS": 3.08,
+    "endS": 3.4
+   },
+   {
+    "text": "it",
+    "startS": 3.4,
+    "endS": 3.72
+   },
+   {
+    "text": "had",
+    "startS": 3.72,
+    "endS": 3.92
+   },
+   {
+    "text": "already",
+    "startS": 3.92,
+    "endS": 4.38
+   },
+   {
+    "text": "checked",
+    "startS": 4.38,
+    "endS": 4.84
+   },
+   {
+    "text": "and",
+    "startS": 4.84,
+    "endS": 5.26
+   },
+   {
+    "text": "missed.",
+    "startS": 5.26,
+    "endS": 5.58
+   }
+  ],
+  "cuts": [
+   {
+    "afterWord": 0,
+    "cutS": 0.57,
     "levelDb": -17
    },
    {
-    "afterWord": 12,
-    "cutS": 6.93,
-    "levelDb": -41
+    "afterWord": 1,
+    "cutS": 0.63,
+    "levelDb": -19
    },
    {
-    "afterWord": 13,
-    "cutS": 7.29,
-    "levelDb": -26
-   },
-   {
-    "afterWord": 14,
-    "cutS": 7.77,
+    "afterWord": 2,
+    "cutS": 1.21,
     "levelDb": -17
    },
    {
-    "afterWord": 15,
-    "cutS": 7.91,
+    "afterWord": 3,
+    "cutS": 1.71,
     "levelDb": -33
    },
    {
-    "afterWord": 16,
-    "cutS": 8.33,
-    "levelDb": -52
-   },
-   {
-    "afterWord": 17,
-    "cutS": 8.45,
-    "levelDb": -43
-   },
-   {
-    "afterWord": 18,
-    "cutS": 9.01,
+    "afterWord": 4,
+    "cutS": 2.29,
     "levelDb": -36
    },
    {
-    "afterWord": 19,
-    "cutS": 9.39,
-    "levelDb": -58
+    "afterWord": 5,
+    "cutS": 2.59,
+    "levelDb": -45
    },
    {
-    "afterWord": 20,
-    "cutS": 9.87,
-    "levelDb": -41
+    "afterWord": 6,
+    "cutS": 2.61,
+    "levelDb": -42
    },
    {
-    "afterWord": 21,
-    "cutS": 10.17,
-    "levelDb": -49
+    "afterWord": 7,
+    "cutS": 2.99,
+    "levelDb": -26
+   },
+   {
+    "afterWord": 8,
+    "cutS": 2.99,
+    "levelDb": -26
+   },
+   {
+    "afterWord": 9,
+    "cutS": 3.43,
+    "levelDb": -38
+   },
+   {
+    "afterWord": 10,
+    "cutS": 3.71,
+    "levelDb": -50
+   },
+   {
+    "afterWord": 11,
+    "cutS": 4.03,
+    "levelDb": -55
+   },
+   {
+    "afterWord": 12,
+    "cutS": 4.47,
+    "levelDb": -43
+   },
+   {
+    "afterWord": 13,
+    "cutS": 4.87,
+    "levelDb": -42
+   },
+   {
+    "afterWord": 14,
+    "cutS": 5.23,
+    "levelDb": -20
    }
   ]
  },
@@ -560,7 +533,7 @@
  },
  "p1-03-lab": {
   "src": "audio/part1/p1-03-lab.mp3",
-  "durationS": 10.919,
+  "durationS": 15.961,
   "words": [
    {
     "text": "This",
@@ -570,17 +543,17 @@
    {
     "text": "is",
     "startS": 0.3,
-    "endS": 0.56
+    "endS": 0.52
    },
    {
-    "text": "Oblation",
-    "startS": 0.56,
-    "endS": 1.02
+    "text": "Ablation",
+    "startS": 0.52,
+    "endS": 1
    },
    {
     "text": "Lab.",
-    "startS": 1.02,
-    "endS": 1.32
+    "startS": 1,
+    "endS": 1.3
    },
    {
     "text": "where",
@@ -590,274 +563,394 @@
    {
     "text": "we",
     "startS": 1.88,
-    "endS": 2.02
+    "endS": 2
    },
    {
     "text": "test",
-    "startS": 2.02,
-    "endS": 2.32
+    "startS": 2,
+    "endS": 2.3
    },
    {
     "text": "AI",
-    "startS": 2.32,
-    "endS": 2.68
+    "startS": 2.3,
+    "endS": 2.7
    },
    {
     "text": "agents",
-    "startS": 2.68,
-    "endS": 3.08
+    "startS": 2.7,
+    "endS": 3.1
    },
    {
     "text": "with",
-    "startS": 3.08,
-    "endS": 3.4
+    "startS": 3.1,
+    "endS": 3.42
    },
    {
     "text": "controlled",
-    "startS": 3.4,
-    "endS": 3.9
+    "startS": 3.42,
+    "endS": 3.88
    },
    {
     "text": "experiments.",
-    "startS": 3.9,
-    "endS": 4.62
+    "startS": 3.88,
+    "endS": 4.52
    },
    {
     "text": "This",
-    "startS": 5.4,
-    "endS": 5.54
+    "startS": 5.34,
+    "endS": 5.48
    },
    {
     "text": "video",
-    "startS": 5.54,
-    "endS": 5.84
+    "startS": 5.48,
+    "endS": 5.76
    },
    {
     "text": "asks",
-    "startS": 5.84,
-    "endS": 6.24
+    "startS": 5.76,
+    "endS": 6.22
    },
    {
     "text": "whether",
-    "startS": 6.24,
-    "endS": 6.6
+    "startS": 6.22,
+    "endS": 6.58
    },
    {
     "text": "AI",
-    "startS": 6.6,
+    "startS": 6.58,
     "endS": 7
    },
    {
-    "text": "agents",
+    "text": "agents...",
     "startS": 7,
-    "endS": 7.38
+    "endS": 7.82
    },
    {
-    "text": "can",
-    "startS": 7.38,
-    "endS": 7.7
+    "text": "AIs",
+    "startS": 8.08,
+    "endS": 8.42
    },
    {
-    "text": "check",
-    "startS": 7.7,
-    "endS": 7.98
+    "text": "that",
+    "startS": 8.42,
+    "endS": 8.6
    },
    {
-    "text": "each",
-    "startS": 7.98,
-    "endS": 8.24
+    "text": "write",
+    "startS": 8.6,
+    "endS": 8.88
    },
    {
-    "text": "other's",
-    "startS": 8.24,
-    "endS": 8.5
+    "text": "files,",
+    "startS": 8.88,
+    "endS": 9.42
    },
    {
-    "text": "work.",
-    "startS": 8.5,
-    "endS": 8.82
+    "text": "run",
+    "startS": 9.68,
+    "endS": 9.82
+   },
+   {
+    "text": "code,",
+    "startS": 9.82,
+    "endS": 10.26
    },
    {
     "text": "and",
-    "startS": 9.3,
-    "endS": 9.4
+    "startS": 10.5,
+    "endS": 10.56
+   },
+   {
+    "text": "use",
+    "startS": 10.56,
+    "endS": 10.76
+   },
+   {
+    "text": "tools",
+    "startS": 10.76,
+    "endS": 11.04
+   },
+   {
+    "text": "on",
+    "startS": 11.04,
+    "endS": 11.28
+   },
+   {
+    "text": "their",
+    "startS": 11.28,
+    "endS": 11.42
+   },
+   {
+    "text": "own",
+    "startS": 11.42,
+    "endS": 11.78
+   },
+   {
+    "text": "can",
+    "startS": 11.78,
+    "endS": 12.34
+   },
+   {
+    "text": "check",
+    "startS": 12.34,
+    "endS": 12.64
+   },
+   {
+    "text": "each",
+    "startS": 12.64,
+    "endS": 12.9
+   },
+   {
+    "text": "other's",
+    "startS": 12.9,
+    "endS": 13.16
+   },
+   {
+    "text": "work.",
+    "startS": 13.16,
+    "endS": 13.48
+   },
+   {
+    "text": "and",
+    "startS": 13.98,
+    "endS": 14.3
    },
    {
     "text": "how",
-    "startS": 9.4,
-    "endS": 9.6
+    "startS": 14.3,
+    "endS": 14.66
    },
    {
     "text": "we",
-    "startS": 9.6,
-    "endS": 9.78
+    "startS": 14.66,
+    "endS": 14.82
    },
    {
     "text": "plan",
-    "startS": 9.78,
-    "endS": 9.96
+    "startS": 14.82,
+    "endS": 14.98
    },
    {
     "text": "to",
-    "startS": 9.96,
-    "endS": 10.16
+    "startS": 14.98,
+    "endS": 15.18
    },
    {
     "text": "find",
-    "startS": 10.16,
-    "endS": 10.36
+    "startS": 15.18,
+    "endS": 15.36
    },
    {
     "text": "out.",
-    "startS": 10.36,
-    "endS": 10.7
+    "startS": 15.36,
+    "endS": 15.66
    }
   ],
   "cuts": [
    {
     "afterWord": 0,
-    "cutS": 0.43,
-    "levelDb": -45
+    "cutS": 0.39,
+    "levelDb": -34
    },
    {
     "afterWord": 1,
-    "cutS": 0.69,
-    "levelDb": -46
+    "cutS": 0.65,
+    "levelDb": -39
    },
    {
     "afterWord": 2,
-    "cutS": 0.99,
-    "levelDb": -18
+    "cutS": 0.97,
+    "levelDb": -21
    },
    {
     "afterWord": 3,
-    "cutS": 1.65,
-    "levelDb": -57
+    "cutS": 1.59,
+    "levelDb": -60
    },
    {
     "afterWord": 4,
-    "cutS": 1.77,
-    "levelDb": -44
+    "cutS": 2.01,
+    "levelDb": -33
    },
    {
     "afterWord": 5,
-    "cutS": 2.03,
+    "cutS": 2.01,
     "levelDb": -33
    },
    {
     "afterWord": 6,
     "cutS": 2.41,
-    "levelDb": -49
+    "levelDb": -51
    },
    {
     "afterWord": 7,
-    "cutS": 2.75,
-    "levelDb": -17
+    "cutS": 2.77,
+    "levelDb": -19
    },
    {
     "afterWord": 8,
-    "cutS": 3.25,
-    "levelDb": -30
+    "cutS": 3.27,
+    "levelDb": -29
    },
    {
     "afterWord": 9,
-    "cutS": 3.43,
-    "levelDb": -52
-   },
-   {
-    "afterWord": 10,
-    "cutS": 3.99,
-    "levelDb": -25
-   },
-   {
-    "afterWord": 11,
-    "cutS": 4.89,
-    "levelDb": -58
-   },
-   {
-    "afterWord": 12,
-    "cutS": 5.61,
-    "levelDb": -33
-   },
-   {
-    "afterWord": 13,
-    "cutS": 5.97,
-    "levelDb": -17
-   },
-   {
-    "afterWord": 14,
-    "cutS": 6.27,
-    "levelDb": -39
-   },
-   {
-    "afterWord": 15,
-    "cutS": 6.71,
+    "cutS": 3.45,
     "levelDb": -44
    },
    {
+    "afterWord": 10,
+    "cutS": 4.05,
+    "levelDb": -31
+   },
+   {
+    "afterWord": 11,
+    "cutS": 5.25,
+    "levelDb": -70
+   },
+   {
+    "afterWord": 12,
+    "cutS": 5.57,
+    "levelDb": -31
+   },
+   {
+    "afterWord": 13,
+    "cutS": 5.87,
+    "levelDb": -16
+   },
+   {
+    "afterWord": 14,
+    "cutS": 6.39,
+    "levelDb": -45
+   },
+   {
+    "afterWord": 15,
+    "cutS": 6.69,
+    "levelDb": -43
+   },
+   {
     "afterWord": 16,
-    "cutS": 7.07,
-    "levelDb": -18
+    "cutS": 7.09,
+    "levelDb": -16
    },
    {
     "afterWord": 17,
-    "cutS": 7.55,
-    "levelDb": -51
+    "cutS": 7.91,
+    "levelDb": -60
    },
    {
     "afterWord": 18,
-    "cutS": 7.61,
-    "levelDb": -28
+    "cutS": 8.49,
+    "levelDb": -39
    },
    {
     "afterWord": 19,
-    "cutS": 7.99,
-    "levelDb": -42
+    "cutS": 8.61,
+    "levelDb": -33
    },
    {
     "afterWord": 20,
-    "cutS": 8.15,
-    "levelDb": -35
+    "cutS": 9.03,
+    "levelDb": -29
    },
    {
     "afterWord": 21,
-    "cutS": 8.51,
-    "levelDb": -30
+    "cutS": 9.61,
+    "levelDb": -49
    },
    {
     "afterWord": 22,
-    "cutS": 9.25,
-    "levelDb": -51
+    "cutS": 9.91,
+    "levelDb": -28
    },
    {
     "afterWord": 23,
-    "cutS": 9.31,
-    "levelDb": -26
+    "cutS": 10.41,
+    "levelDb": -46
    },
    {
     "afterWord": 24,
-    "cutS": 9.77,
-    "levelDb": -41
+    "cutS": 10.73,
+    "levelDb": -20
    },
    {
     "afterWord": 25,
-    "cutS": 9.77,
-    "levelDb": -41
+    "cutS": 10.81,
+    "levelDb": -49
    },
    {
     "afterWord": 26,
-    "cutS": 10.13,
-    "levelDb": -30
+    "cutS": 11.13,
+    "levelDb": -19
    },
    {
     "afterWord": 27,
-    "cutS": 10.21,
-    "levelDb": -34
+    "cutS": 11.23,
+    "levelDb": -14
    },
    {
     "afterWord": 28,
-    "cutS": 10.53,
-    "levelDb": -16
+    "cutS": 11.53,
+    "levelDb": -14
+   },
+   {
+    "afterWord": 29,
+    "cutS": 11.81,
+    "levelDb": -48
+   },
+   {
+    "afterWord": 30,
+    "cutS": 12.27,
+    "levelDb": -23
+   },
+   {
+    "afterWord": 31,
+    "cutS": 12.65,
+    "levelDb": -35
+   },
+   {
+    "afterWord": 32,
+    "cutS": 12.81,
+    "levelDb": -31
+   },
+   {
+    "afterWord": 33,
+    "cutS": 13.17,
+    "levelDb": -27
+   },
+   {
+    "afterWord": 34,
+    "cutS": 13.83,
+    "levelDb": -62
+   },
+   {
+    "afterWord": 35,
+    "cutS": 14.43,
+    "levelDb": -45
+   },
+   {
+    "afterWord": 36,
+    "cutS": 14.83,
+    "levelDb": -44
+   },
+   {
+    "afterWord": 37,
+    "cutS": 14.83,
+    "levelDb": -44
+   },
+   {
+    "afterWord": 38,
+    "cutS": 14.89,
+    "levelDb": -31
+   },
+   {
+    "afterWord": 39,
+    "cutS": 15.21,
+    "levelDb": -30
+   },
+   {
+    "afterWord": 40,
+    "cutS": 15.51,
+    "levelDb": -13
    }
   ]
  },

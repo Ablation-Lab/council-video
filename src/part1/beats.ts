@@ -31,6 +31,11 @@ export type Beat = {
   take?: Take;
   /** Silence before this beat starts (seconds). */
   gapBeforeS?: number;
+  /**
+   * Words cut from a recorded line: the beat takes its share of the take (so the
+   * take still lines up with the script) but is never played or timed.
+   */
+  skip?: boolean;
 };
 
 export type TimedBeat = Beat & {
@@ -47,6 +52,9 @@ export type TimedBeat = Beat & {
 export const PLACEHOLDER_WPM = 152;
 // Extra time a placeholder allows after a full stop, question mark or colon.
 const PLACEHOLDER_PAUSE_S = 0.4;
+
+// Silence kept before the first word that follows cut words.
+const SKIP_LEAD_S = 0.15;
 
 const norm = (raw: string) => raw.toLowerCase().replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, '');
 
@@ -87,7 +95,11 @@ const attachTakes = (beats: Beat[], takes: Record<string, LineTake>) => {
     const last = first + written.length - 1;
     used[b.line!] = last + 1;
     const span = take.words.slice(first, last + 1);
-    const fromS = first === 0 ? 0 : take.cuts[first - 1].cutS;
+    // After cut (skipped) words, start just before this beat's first word rather
+    // than mid-pause, so the cut words' pause doesn't stay in as extra silence.
+    const afterSkip = group[group.indexOf(b) - 1]?.skip;
+    const cutS = first === 0 ? 0 : take.cuts[first - 1].cutS;
+    const fromS = afterSkip ? Math.max(cutS, take.words[first].startS - SKIP_LEAD_S) : cutS;
     const toS = last === take.words.length - 1 ? take.durationS : take.cuts[last].cutS;
     const off = span.filter((w, i) => norm(w.text) !== norm(written[i])).map((w) => w.text);
     if (off.length) heard[b.id] = off;
@@ -103,7 +115,9 @@ export const buildSection = (
   rawBeats: Beat[],
   {leadS = 0.5, tailS = 1.0, holdS = 0, takes = {}}: {leadS?: number; tailS?: number; holdS?: number; takes?: Record<string, LineTake>} = {},
 ) => {
-  const {beats, heard} = attachTakes(rawBeats, takes);
+  const attached = attachTakes(rawBeats, takes);
+  const beats = attached.beats.filter((b) => !b.skip);
+  const {heard} = attached;
   let t = leadS;
   const timed: TimedBeat[] = beats.map((b, i) => {
     if (i > 0) t += b.gapBeforeS ?? 0.45;

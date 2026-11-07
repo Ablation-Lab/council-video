@@ -1,77 +1,71 @@
 // Part 1 ("Can AI agents check each other?"), Section 1: the opening.
-// Cold open on the WinScope pilot, the hook question, what an agent is plus a
-// one-line intro to Ablation Lab, then what AI reviewers can check and why this
-// video tests code. Recorded lines come from takes.json (scripts/part-voiceover.mjs);
+// Cold open on the WinScope pilot, the hook question, Ablation Lab (logo, what
+// this video asks, a mini council review), then what AI reviewers can check and
+// why this video tests code: the council's code file moves into the Code box. Recorded lines come from takes.json (scripts/part-voiceover.mjs);
 // any line not yet recorded plays as a timed caption (see beats.ts).
 import React from 'react';
 import {interpolate, useCurrentFrame} from 'remotion';
-import {Check, CirclePlay, CodeXml, FilePen, FileText, Hammer, Search, ShieldAlert, Terminal, Timer, Workflow, Wrench} from 'lucide-react';
+import {Check, CirclePlay, FileCode, FileText, Hammer, ListChecks, Search, ShieldAlert, Timer} from 'lucide-react';
 import {Eyebrow} from '../components/SceneFrame';
 import {Card, Tag, phase} from '../components/Kit';
 import {LineIcon} from '../components/LineIcon';
 import {Flash, glowBorder, glowColor} from '../components/Accent';
-import {fadeUp, prog} from '../anim';
+import {AblationLogo} from '../components/AblationLogo';
+import {fadeUp, mix, prog} from '../anim';
 import {colors, fonts, type} from '../theme';
-import voiceover from '../voiceover.json';
-import {buildSection, type LineTake, type Take} from './beats';
+import {buildSection, type LineTake} from './beats';
 import takes from './takes.json';
 import {SectionFrame} from './SectionFrame';
 import {assertHolds, BEAT_S, COUNT_UP, ENTER, ENTER_BIG, SLIDE_FADE, STAGGER, type KeyFact} from './pace';
 
 /* ---------- Narration ---------- */
 
-// Reused take: the first sentence of the v14b Scene 1 clip (public/audio/scene01.mp3).
-// It's cut in the pause before "They now write more code…".
-const s01 = (voiceover as Record<string, {file: string; words: {text: string; startMs: number; endMs: number}[]}>).s01;
-const AGENTS_WORDS = 15;
-const agentsTake: Take = {
-  src: s01.file,
-  fromS: 0,
-  toS: (s01.words[AGENTS_WORDS - 1].endMs + s01.words[AGENTS_WORDS].startMs) / 2000,
-  words: s01.words.slice(0, AGENTS_WORDS).map((w) => ({text: w.text, startS: w.startMs / 1000, endS: w.endMs / 1000})),
-};
-
 // Long lines are split at their natural pauses so a beat (BEAT_S) can follow
 // each key point. A split line is still one recording; the take is cut at that pause.
+// "reported" and "hole" are two separate takes, so neither is cut.
 export const SECTION = buildSection(
   [
     {
       id: 'built',
       line: 'p1-01-built',
-      text: 'After a coordinator agent laid the groundwork, four AI builders wrote most of a Windows app, WinScope, in about 33 minutes.',
+      text: 'A team of AI agents built a Windows app, WinScope, in about 33 minutes.',
     },
     // Long enough for "33 minutes" to hold KEY_HOLD_S before the slide changes.
-    {id: 'reported', line: 'p1-01-reported', text: 'Then, over four review rounds, other AI reviewers reported 97 problems,', gapBeforeS: 2.5},
-    {id: 'hole', line: 'p1-01-reported', text: 'including a security hole in code the coordinator had already checked itself.', gapBeforeS: BEAT_S},
-    {id: 'hook', line: 'p1-02-hook', text: 'So is one AI agent enough to check its own work?', gapBeforeS: 1.6 + BEAT_S},
+    {id: 'reported', line: 'p1-01-reported-a', text: 'Then, over four review rounds, other AI reviewers reported 97 problems.', gapBeforeS: 2.5},
     {
-      id: 'agents',
-      text: 'AI agents are AIs that write files, run code and use tools on their own.',
-      take: agentsTake,
-      gapBeforeS: 1.8 + BEAT_S,
+      id: 'hole',
+      line: 'p1-01-reported-b',
+      text: 'Including a serious security flaw that the AI that wrote it had already checked and missed.',
+      gapBeforeS: BEAT_S,
     },
+    {id: 'hook', line: 'p1-02-hook', text: 'So is one AI agent enough to check its own work?', gapBeforeS: 1.6 + BEAT_S},
     {
       id: 'lab',
       line: 'p1-03-lab',
       text: 'This is Ablation Lab, where we test AI agents with controlled experiments.',
-      gapBeforeS: 1.5 + BEAT_S,
+      gapBeforeS: 1.8 + BEAT_S,
     },
     {
       id: 'video',
       line: 'p1-03-lab',
-      text: "This video asks whether AI agents can check each other's work, and how we plan to find out.",
+      text: "This video asks whether AI agents, AIs that write files, run code and use tools on their own, can check each other's work, and how we plan to find out.",
       gapBeforeS: BEAT_S,
     },
+    // Cut from p1-04-kinds: the take's opening sentence (it had no context in the video).
+    {id: 'kinds-cut', line: 'p1-04-kinds', text: 'AI reviewers can check documents.', skip: true},
     {
       id: 'kinds',
       line: 'p1-04-kinds',
-      text: 'AI reviewers can check documents: a separate AI caught structural problems in this research plan.',
-      gapBeforeS: 1.4 + BEAT_S,
+      text: 'A separate AI caught structural problems in this research plan.',
+      // Room for the merged list to hold, then for the code file to move into the Code box.
+      gapBeforeS: 2.5 + BEAT_S,
     },
+    // Also cut: the "Videos." label, which no longer has a list to head.
+    {id: 'videos-cut', line: 'p1-04-kinds', text: 'Videos.', skip: true},
     {
       id: 'videos',
       line: 'p1-04-kinds',
-      text: 'Videos: our video review tool caught a blank frame in an earlier cut of this video.',
+      text: 'Our video review tool caught a blank frame in an earlier cut of this video.',
       gapBeforeS: BEAT_S,
     },
     {id: 'code', line: 'p1-04-code', text: "And code, which is what we're testing,", gapBeforeS: 0.3 + BEAT_S},
@@ -92,29 +86,17 @@ const {cue, beat} = SECTION;
 const BUILDERS = ['Performance', 'Network', 'Events', 'Storage'];
 
 const Build: React.FC<{frame: number}> = ({frame}) => {
-  const coordAt = cue('built', 'After a coordinator agent');
-  const buildersAt = cue('built', 'four AI builders');
+  const buildersAt = cue('built', 'A team of AI agents');
   const timeAt = cue('built', 'in about 33 minutes');
   return (
     <>
-      <Card style={{left: 120, top: 340, width: 380, height: 170, border: glowBorder(frame, coordAt), ...fadeUp(frame, coordAt, ENTER)}}>
-        <LineIcon icon={Workflow} glowAt={coordAt} />
-        <div style={{fontSize: type.small, fontWeight: 600, marginTop: 14}}>
-          <Flash at={coordAt}>Coordinator</Flash>
-        </div>
-        <div style={{fontSize: type.caption, color: colors.muted, marginTop: 4}}>lays the groundwork</div>
-      </Card>
-      <svg width={80} height={20} style={{position: 'absolute', left: 510, top: 415, opacity: prog(frame, buildersAt - 6, ENTER)}}>
-        <line x1={0} x2={64} y1={10} y2={10} stroke={colors.line} strokeWidth={2} />
-        <path d="M60 4l10 6-10 6" fill="none" stroke={colors.line} strokeWidth={2} />
-      </svg>
       {BUILDERS.map((name, i) => (
         <Card
           key={name}
           style={{
-            left: 600 + i * 300,
+            left: 120 + i * 425,
             top: 340,
-            width: 280,
+            width: 405,
             height: 170,
             border: glowBorder(frame, buildersAt + i * STAGGER),
             ...fadeUp(frame, buildersAt + i * STAGGER, ENTER, 10),
@@ -130,9 +112,9 @@ const Build: React.FC<{frame: number}> = ({frame}) => {
       <div
         style={{
           position: 'absolute',
-          left: 600,
+          left: 120,
           top: 560,
-          width: 1180,
+          width: 1680,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -163,10 +145,10 @@ const Review: React.FC<{frame: number}> = ({frame}) => {
   const roundsAt = cue('reported', 'over four review rounds');
   const reviewersAt = cue('reported', 'other AI reviewers');
   const numberAt = cue('reported', 'reported 97 problems');
-  const holeAt = cue('hole', 'including a security hole');
-  const selfAt = cue('hole', 'had already checked itself');
-  // The self-review tag arrives with "the coordinator", so it's fully in by the time the line ends.
-  const tagAt = cue('hole', 'in code the coordinator');
+  const holeAt = cue('hole', 'Including a serious security flaw');
+  const selfAt = cue('hole', 'had already checked and missed');
+  // The self-review tag arrives with "the AI that wrote it", so it's fully in by the time the line ends.
+  const tagAt = cue('hole', 'the AI that wrote it');
   const count = Math.round(interpolate(frame, [numberAt, numberAt + COUNT_UP], [0, TOTAL], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}));
   let x = 0;
   return (
@@ -243,10 +225,10 @@ const Review: React.FC<{frame: number}> = ({frame}) => {
 
       <Card accent style={{left: 1180, top: 300, width: 620, padding: '28px 32px 32px', ...fadeUp(frame, holeAt, ENTER, 12)}}>
         <LineIcon icon={ShieldAlert} accent size={48} />
-        <Eyebrow style={{color: colors.accent, marginTop: 18}}>Security hole</Eyebrow>
+        <Eyebrow style={{color: colors.accent, marginTop: 18}}>Serious security flaw</Eyebrow>
         <div style={{fontSize: 40, fontWeight: 600, lineHeight: 1.2, marginTop: 12}}>
-          in code the coordinator had{' '}
-          <span style={{color: frame >= selfAt ? colors.accent : colors.text}}>already checked itself</span>
+          that the AI that wrote it had{' '}
+          <span style={{color: frame >= selfAt ? colors.accent : colors.text}}>already checked and missed</span>
         </div>
         <div
           style={{
@@ -261,7 +243,7 @@ const Review: React.FC<{frame: number}> = ({frame}) => {
           }}
         >
           <Check size={28} strokeWidth={1.5} color={glowColor(frame, tagAt, colors.muted)} />
-          coordinator: self-reviewed
+          writer: self-reviewed
         </div>
       </Card>
     </>
@@ -306,68 +288,217 @@ const Hook: React.FC<{frame: number; start: number}> = ({frame, start}) => (
   </div>
 );
 
-/* ---------- 3. What an agent is, and who we are ---------- */
+/* ---------- 3. Ablation Lab, and what this video asks ---------- */
 
-const ABILITIES = [
-  {label: 'write files', icon: FilePen},
-  {label: 'run code', icon: Terminal},
-  {label: 'use tools', icon: Wrench},
-];
+// The mini council: a code file, three reviewers around it, each pinning a
+// finding on the file, then the findings merging into one short list.
+const FILE = {x: 775, y: 640, w: 150, h: 180};
+const FILE_ICON = 56;
+const FILE_PAD = 20;
+const CODE_LINES = [96, 70, 104, 60];
+const lineY = (i: number) => FILE.y - FILE.h / 2 + FILE_PAD + FILE_ICON + 22 + i * 22;
+const LINE_X = FILE.x - FILE.w / 2 + FILE_PAD;
+const R = 200;
+const REVIEWER = 80;
+// Each reviewer sits on the left half-circle round the file and flags one line.
+const REVIEWERS = [
+  {angle: -115, line: 0, cueAt: 'write files'},
+  {angle: 180, line: 1, cueAt: 'run code'},
+  {angle: 115, line: 3, cueAt: 'use tools'},
+].map((r) => ({
+  ...r,
+  x: FILE.x + R * Math.cos((r.angle * Math.PI) / 180),
+  y: FILE.y + R * Math.sin((r.angle * Math.PI) / 180),
+}));
+const pin = (line: number) => ({x: LINE_X + CODE_LINES[line] + 14, y: lineY(line)});
+const LIST = {x: 1025, y: 545, w: 360, h: 190};
+const listRow = (i: number) => ({x: LIST.x + 32, y: LIST.y + 86 + i * 36});
 
-const Agents: React.FC<{frame: number; start: number}> = ({frame, start}) => (
-  <div style={{position: 'absolute', left: 120, top: 300, width: 1680}}>
-    <Eyebrow style={{...fadeUp(frame, start, ENTER)}}>AI agents</Eyebrow>
-    <div style={{fontSize: type.heading, fontWeight: 600, marginTop: 10, ...fadeUp(frame, start + 4, ENTER)}}>
-      AIs that <span style={{color: colors.accent}}>act on their own</span>
-    </div>
-    <div style={{display: 'flex', gap: 20, marginTop: 40}}>
-      {ABILITIES.map((a) => {
-        const at = cue('agents', a.label);
+const SCAN_STAGGER = 12; // frames between the reviewers' scans
+
+const Council: React.FC<{frame: number}> = ({frame}) => {
+  const fileAt = cue('video', 'whether AI agents');
+  const checkAt = cue('video', "can check each other's work");
+  // The findings start to merge in the pause before "and how we plan to find out".
+  const mergeAt = cue('video', 'and how we plan', -0.4);
+  return (
+    <>
+      {/* The file's box and code lines; its icon is FileIcon, which carries on into the Code box. */}
+      <div
+        style={{
+          position: 'absolute',
+          left: FILE.x - FILE.w / 2,
+          top: FILE.y - FILE.h / 2,
+          width: FILE.w,
+          height: FILE.h,
+          boxSizing: 'border-box',
+          borderRadius: 14,
+          border: glowBorder(frame, fileAt),
+          backgroundColor: colors.panel,
+          opacity: prog(frame, fileAt, ENTER),
+        }}
+      />
+      <svg width={1920} height={1080} style={{position: 'absolute', left: 0, top: 0, overflow: 'visible'}}>
+        <g opacity={prog(frame, fileAt + 6, ENTER)}>
+          {CODE_LINES.map((w, i) => (
+            <rect key={i} x={LINE_X} y={lineY(i) - 4} width={w} height={8} rx={4} fill={colors.line} />
+          ))}
+        </g>
+        {REVIEWERS.map((r, i) => {
+          const scanAt = checkAt + i * SCAN_STAGGER;
+          const p = pin(r.line);
+          // Scan line from the reviewer's edge to the flagged line.
+          const dx = p.x - r.x;
+          const dy = p.y - r.y;
+          const len = Math.hypot(dx, dy);
+          const sx = r.x + (dx / len) * (REVIEWER / 2 + 6);
+          const sy = r.y + (dy / len) * (REVIEWER / 2 + 6);
+          const draw = prog(frame, scanAt, ENTER);
+          const fade = 1 - prog(frame, mergeAt, ENTER);
+          return (
+            <g key={i}>
+              <line
+                x1={sx}
+                y1={sy}
+                x2={mix(sx, p.x - 10, draw)}
+                y2={mix(sy, p.y, draw)}
+                stroke={glowColor(frame, scanAt, colors.line)}
+                strokeWidth={2}
+                strokeDasharray="4 6"
+                opacity={draw > 0 ? fade : 0}
+              />
+            </g>
+          );
+        })}
+        {/* Findings: pinned on the file, then each flies to its row in the list. */}
+        {REVIEWERS.map((r, i) => {
+          const pinAt = checkAt + i * SCAN_STAGGER + ENTER - 6;
+          const flyAt = mergeAt + i * STAGGER;
+          const from = pin(r.line);
+          const to = listRow(i);
+          const t = prog(frame, flyAt, ENTER);
+          return (
+            <circle
+              key={i}
+              cx={mix(from.x, to.x, t)}
+              cy={mix(from.y, to.y, t)}
+              r={7}
+              fill={colors.accent}
+              opacity={prog(frame, pinAt, 10)}
+            />
+          );
+        })}
+      </svg>
+      {REVIEWERS.map((r) => {
+        const at = cue('video', r.cueAt);
         return (
           <div
-            key={a.label}
+            key={r.cueAt}
             style={{
-              height: 84,
-              padding: '0 30px 0 24px',
+              position: 'absolute',
+              left: r.x - REVIEWER / 2,
+              top: r.y - REVIEWER / 2,
+              width: REVIEWER,
+              height: REVIEWER,
+              boxSizing: 'border-box',
+              borderRadius: REVIEWER / 2,
+              border: glowBorder(frame, at),
+              backgroundColor: colors.panel,
               display: 'flex',
               alignItems: 'center',
-              gap: 14,
-              borderRadius: 42,
-              border: glowBorder(frame, at),
-              fontSize: type.small,
-              ...fadeUp(frame, at, ENTER, 8),
+              justifyContent: 'center',
+              opacity: prog(frame, at, ENTER),
             }}
           >
-            <LineIcon icon={a.icon} size={34} glowAt={at} />
-            <Flash at={at}>{a.label}</Flash>
+            <LineIcon icon={Search} size={36} glowAt={at} />
           </div>
         );
       })}
-    </div>
-  </div>
-);
-
-const Lab: React.FC<{frame: number; start: number}> = ({frame, start}) => {
-  const videoAt = cue('video', 'This video asks');
-  const howAt = cue('video', 'and how we plan');
-  return (
-    <div style={{position: 'absolute', left: 120, top: 300, width: 1680}}>
-      <div style={{fontFamily: fonts.mono, fontSize: type.body, letterSpacing: 8, color: colors.accent, ...fadeUp(frame, start, ENTER_BIG)}}>ABLATION LAB</div>
-      <div style={{fontSize: type.small, color: colors.muted, marginTop: 14, ...fadeUp(frame, start + 6, ENTER_BIG)}}>
-        testing AI agents with controlled experiments
-      </div>
-      <div style={{marginTop: 90, ...fadeUp(frame, videoAt, ENTER_BIG)}}>
-        <Eyebrow>Part 1</Eyebrow>
-        <div style={{fontSize: type.title, fontWeight: 600, letterSpacing: -1, marginTop: 10}}>
-          Can AI agents <span style={{color: colors.accent}}>check each other?</span>
+      {/* One short list: the three findings merged. */}
+      <div
+        style={{
+          position: 'absolute',
+          left: LIST.x,
+          top: LIST.y,
+          width: LIST.w,
+          height: LIST.h,
+          boxSizing: 'border-box',
+          padding: '18px 24px',
+          borderRadius: 14,
+          border: glowBorder(frame, mergeAt),
+          backgroundColor: colors.panel,
+          opacity: prog(frame, mergeAt - 6, ENTER),
+        }}
+      >
+        <div style={{display: 'flex', alignItems: 'center', gap: 12}}>
+          <LineIcon icon={ListChecks} size={32} glowAt={mergeAt} />
+          <span style={{fontSize: type.caption, fontWeight: 600}}>
+            <Flash at={mergeAt}>Findings</Flash>
+          </span>
         </div>
       </div>
-      <div style={{fontSize: type.body, color: colors.muted, marginTop: 22, ...fadeUp(frame, howAt, ENTER)}}>
-        <Flash at={howAt} base={colors.muted}>
-          …and how we plan to find out
-        </Flash>
+      <svg width={1920} height={1080} style={{position: 'absolute', left: 0, top: 0, overflow: 'visible'}}>
+        {[0, 1, 2].map((i) => {
+          const row = listRow(i);
+          // The row fills in as its finding lands.
+          const landed = prog(frame, mergeAt + i * STAGGER + ENTER - 6, 12);
+          return <rect key={i} x={row.x + 22} y={row.y - 5} width={[230, 190, 250][i]} height={10} rx={5} fill={colors.line} opacity={landed} />;
+        })}
+      </svg>
+    </>
+  );
+};
+
+const Lab: React.FC<{frame: number}> = ({frame}) => {
+  const logoAt = cue('lab', 'Ablation Lab');
+  const videoAt = cue('video', 'This video asks');
+  return (
+    <>
+      <div style={{position: 'absolute', left: 0, right: 0, top: 70, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <div style={{...fadeUp(frame, logoAt, ENTER_BIG)}}>
+          <AblationLogo size={118} at={logoAt} duration={ENTER_BIG} />
+        </div>
+        <div style={{display: 'flex', alignItems: 'baseline', gap: 26, marginTop: 22, ...fadeUp(frame, logoAt + 6, ENTER_BIG)}}>
+          {/* The slide's main word: stays amber. */}
+          <span style={{fontFamily: fonts.mono, fontSize: type.body, letterSpacing: 8, color: colors.accent}}>ABLATION LAB</span>
+          <span style={{fontSize: type.small, color: colors.muted}}>testing AI agents with controlled experiments</span>
+        </div>
+        <div style={{display: 'flex', alignItems: 'baseline', gap: 22, marginTop: 40, ...fadeUp(frame, videoAt, ENTER_BIG)}}>
+          <Eyebrow>Part 1</Eyebrow>
+          <span style={{fontSize: 56, fontWeight: 600, letterSpacing: -0.5}}>
+            Can AI <Flash at={cue('video', "can check each other's work")}>mark its own homework?</Flash>
+          </span>
+        </div>
       </div>
-    </div>
+      <Council frame={frame} />
+    </>
+  );
+};
+
+/* ---------- Bridge: the council's code file becomes the Code box's icon ---------- */
+
+// Where the Code box's icon sits on the framing slide (Card padding 22/28 inside a 2px border).
+const CODE_BOX = {left: 120 + 2 * 580, top: 330};
+const CODE_ICON = {x: CODE_BOX.left + 2 + 28, y: CODE_BOX.top + 2 + 22, size: 48};
+
+const FileIcon: React.FC<{frame: number}> = ({frame}) => {
+  const fileAt = cue('video', 'whether AI agents');
+  // It moves as the Ablation Lab slide fades, so it arrives as the framing slide comes up.
+  const moveAt = beat('kinds').startF - 12 - SLIDE_FADE / 2;
+  const codeAt = cue('code', 'And code');
+  const highlight = prog(frame, cue('code', "which is what we're testing"), ENTER) > 0.5;
+  const t = prog(frame, moveAt, ENTER_BIG + 6);
+  const size = mix(FILE_ICON, CODE_ICON.size, t);
+  const x = mix(FILE.x - FILE.w / 2 + FILE_PAD, CODE_ICON.x, t);
+  const y = mix(FILE.y - FILE.h / 2 + FILE_PAD, CODE_ICON.y, t);
+  const color = highlight ? colors.accent : glowColor(frame, frame < codeAt ? fileAt : codeAt, colors.muted);
+  return (
+    <FileCode
+      size={size}
+      strokeWidth={1.5}
+      color={color}
+      style={{position: 'absolute', left: x, top: y, opacity: prog(frame, fileAt, ENTER)}}
+    />
   );
 };
 
@@ -375,20 +506,20 @@ const Lab: React.FC<{frame: number; start: number}> = ({frame, start}) => {
 
 const KINDS = [
   {
-    label: 'Documents',
+    label: 'Research plan',
     icon: FileText,
     example: 'A separate AI caught structural problems in this research plan',
-    at: () => cue('kinds', 'documents'),
+    at: () => cue('kinds', 'A separate AI'),
   },
   {
     label: 'Videos',
     icon: CirclePlay,
     example: 'Our video review tool caught a blank frame in an earlier cut of this video',
-    at: () => cue('videos', 'Videos'),
+    at: () => cue('videos', 'Our video review tool'),
   },
   {
     label: 'Code',
-    icon: CodeXml,
+    icon: FileCode,
     example: 'Plant bugs on purpose, then count exactly how many get caught',
     at: () => cue('code', 'And code'),
   },
@@ -418,11 +549,12 @@ const Kinds: React.FC<{frame: number; start: number}> = ({frame, start}) => {
               width: 520,
               height: 400,
               ...(highlight ? {} : {border: glowBorder(frame, at)}),
-              ...fadeUp(frame, at, ENTER),
-              ...(isCode ? {} : {opacity: prog(frame, at, ENTER) * (1 - 0.55 * focus)}),
+              // The Code box fades in round the file icon already in place, so it doesn't rise.
+              ...(isCode ? {opacity: prog(frame, at, ENTER)} : {...fadeUp(frame, at, ENTER), opacity: prog(frame, at, ENTER) * (1 - 0.55 * focus)}),
             }}
           >
-            <LineIcon icon={k.icon} size={48} accent={highlight} glowAt={at} />
+            {/* The Code box's icon is FileIcon, drawn above the slides. */}
+            {isCode ? <div style={{height: 48}} /> : <LineIcon icon={k.icon} size={48} glowAt={at} />}
             <div style={{fontSize: 48, fontWeight: 600, marginTop: 20}}>
               {highlight ? <span style={{color: colors.accent}}>{k.label}</span> : <Flash at={at}>{k.label}</Flash>}
             </div>
@@ -452,30 +584,24 @@ const Kinds: React.FC<{frame: number; start: number}> = ({frame, start}) => {
 export const Part1Section1: React.FC = () => {
   const frame = useCurrentFrame();
   const hookAt = beat('hook').startF;
-  const agentsAt = beat('agents').startF;
   const labAt = beat('lab').startF;
   const kindsAt = beat('kinds').startF;
   // Slides change in the pause before their first line.
   const lead = 12;
-  const onBigText = (frame >= hookAt - lead && frame < agentsAt - lead) || (frame >= labAt - lead && frame < kindsAt - lead);
+  const onBigText = frame >= hookAt - lead && frame < labAt - lead;
   return (
     <SectionFrame section={SECTION} number="1.1" title="The opening" hideLabel={onBigText}>
       <div style={{position: 'absolute', inset: 0, opacity: phase(frame, 0, hookAt - lead, SLIDE_FADE, SLIDE_FADE)}}>
         <ColdOpen frame={frame} />
       </div>
       {frame >= hookAt - lead - 10 && (
-        <div style={{position: 'absolute', inset: 0, opacity: phase(frame, hookAt - lead, agentsAt - lead, SLIDE_FADE, SLIDE_FADE)}}>
+        <div style={{position: 'absolute', inset: 0, opacity: phase(frame, hookAt - lead, labAt - lead, SLIDE_FADE, SLIDE_FADE)}}>
           <Hook frame={frame} start={hookAt - lead / 2} />
-        </div>
-      )}
-      {frame >= agentsAt - lead - 10 && (
-        <div style={{position: 'absolute', inset: 0, opacity: phase(frame, agentsAt - lead, labAt - lead, SLIDE_FADE, SLIDE_FADE)}}>
-          <Agents frame={frame} start={agentsAt - lead / 2} />
         </div>
       )}
       {frame >= labAt - lead - 10 && (
         <div style={{position: 'absolute', inset: 0, opacity: phase(frame, labAt - lead, kindsAt - lead, SLIDE_FADE, SLIDE_FADE)}}>
-          <Lab frame={frame} start={labAt - lead / 2} />
+          <Lab frame={frame} />
         </div>
       )}
       {frame >= kindsAt - lead - 10 && (
@@ -483,6 +609,7 @@ export const Part1Section1: React.FC = () => {
           <Kinds frame={frame} start={kindsAt - lead / 2} />
         </div>
       )}
+      <FileIcon frame={frame} />
     </SectionFrame>
   );
 };
@@ -497,11 +624,12 @@ const slideOut = (nextBeat: string) => beat(nextBeat).startF - 12 - SLIDE_FADE;
 export const KEY_FACTS: KeyFact[] = [
   {label: '33 minutes', fullAt: cue('built', 'in about 33 minutes') + ENTER, leavesAt: cue('reported', 'over four review rounds') - 10 + 4 - SLIDE_FADE},
   {label: '97 problems', fullAt: cue('reported', 'reported 97 problems') + COUNT_UP, leavesAt: slideOut('hook')},
-  {label: 'security hole', fullAt: cue('hole', 'including a security hole') + ENTER, leavesAt: slideOut('hook')},
-  {label: 'coordinator self-reviewed', fullAt: cue('hole', 'in code the coordinator') + ENTER, leavesAt: slideOut('hook')},
-  {label: 'hook question', fullAt: beat('hook').startF - 6 + ENTER_BIG, leavesAt: slideOut('agents')},
-  {label: 'act on their own', fullAt: beat('agents').startF - 6 + 4 + ENTER, leavesAt: slideOut('lab')},
+  {label: 'serious security flaw', fullAt: cue('hole', 'Including a serious security flaw') + ENTER, leavesAt: slideOut('hook')},
+  {label: 'writer self-reviewed', fullAt: cue('hole', 'the AI that wrote it') + ENTER, leavesAt: slideOut('hook')},
+  {label: 'hook question', fullAt: beat('hook').startF - 6 + ENTER_BIG, leavesAt: slideOut('lab')},
+  {label: 'Ablation Lab logo', fullAt: cue('lab', 'Ablation Lab') + 6 + ENTER_BIG, leavesAt: slideOut('kinds')},
   {label: 'Part 1 title', fullAt: cue('video', 'This video asks') + ENTER_BIG, leavesAt: slideOut('kinds')},
+  {label: 'merged findings list', fullAt: cue('video', 'and how we plan', -0.4) + 2 * STAGGER + ENTER + 6, leavesAt: slideOut('kinds')},
   {label: 'Code, what we test', fullAt: cue('code', "which is what we're testing") + ENTER, leavesAt: SECTION.durationInFrames - 12},
 ];
 assertHolds('Part1-Section1', KEY_FACTS);
