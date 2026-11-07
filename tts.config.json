@@ -1,6 +1,6 @@
 {
   "voiceId": "Y0JCNRp49WKQ4t7j0A6P",
-  "modelId": "eleven_v3",
+  "modelId": "eleven_v4",
   "outputFormat": "mp3_44100_128",
   "voiceSettings": {
     "stability": 0.7,
