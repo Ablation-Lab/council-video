@@ -82,14 +82,21 @@ const attachTakes = (beats: Beat[], takes: Record<string, LineTake>) => {
     const take = b.line && !b.take ? takes[b.line] : undefined;
     if (!take) return b;
     const group = beats.filter((x) => x.line === b.line && !x.take);
-    const total = group.reduce((n, x) => n + x.text.split(/\s+/).length, 0);
-    if (total !== take.words.length) {
+    const count = (x: Beat) => x.text.split(/\s+/).length;
+    const total = group.reduce((n, x) => n + count(x), 0);
+    const spoken = group.reduce((n, x) => n + (x.skip ? 0 : count(x)), 0);
+    // A take recorded before a sentence was cut still holds the cut words, and the
+    // skipped beat takes its share. A take generated from the script without them
+    // (scripts/tts.mjs) doesn't, and then a skipped beat takes no words.
+    const cutWordsInTake = take.words.length === total;
+    if (!cutWordsInTake && spoken !== take.words.length) {
       throw new Error(
-        `${b.line}: the take has ${take.words.length} words but the script has ${total}.
+        `${b.line}: the take has ${take.words.length} words but the script has ${spoken}${total > spoken ? ` (${total} with its cut sentences)` : ''}.
   heard: ${take.words.map((w) => w.text).join(' ')}
-  script: ${group.map((x) => x.text).join(' ')}`,
+  script: ${group.filter((x) => !x.skip).map((x) => x.text).join(' ')}`,
       );
     }
+    if (b.skip && !cutWordsInTake) return b;
     const first = used[b.line!] ?? 0;
     const written = b.text.split(/\s+/);
     const last = first + written.length - 1;
@@ -164,7 +171,8 @@ export const buildSection = (
     throw new Error(`Cue "${phrase}" not found in beat ${id}`);
   };
 
-  return {beats: timed, beat, cue, durationInFrames};
+  // `script`: every beat as written, cut ones included (scripts/tts.mjs reads it).
+  return {beats: timed, beat, cue, durationInFrames, script: rawBeats};
 };
 
 export type Section = ReturnType<typeof buildSection>;

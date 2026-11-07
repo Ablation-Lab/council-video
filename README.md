@@ -77,3 +77,20 @@ To time a script change before recording it, put temporary stand-ins at `out/dra
 If you change the wording, update [script.md](script.md) and the matching narration in `src/timing.ts`, then re-run it. `src/timing.ts` refuses to build if a recording's word count no longer matches its narration.
 
 To check a recording's wording, `scripts/transcribe-windows.ps1` transcribes a WAV with Windows' built-in speech recogniser. It's rough, but good enough to spot changed phrases.
+
+### Generating takes with the ElevenLabs API (two-part film)
+
+`scripts/tts.mjs` generates the line takes for the Part 1 and Part 2 sections from their scripts, in place of pasting each line into the ElevenLabs website. It reads the API key only from the `ELEVENLABS_API_KEY` environment variable, and the voice, model and settings from [tts.config.json](tts.config.json).
+
+```
+node scripts/tts.mjs                          # dry run: lines, status, characters and credits; spends nothing
+node scripts/tts.mjs --generate               # generate what the dry run listed
+node scripts/tts.mjs --regenerate p1-04-code  # also replace a recorded take (it's kept in .tts-cache/replaced/)
+```
+
+- Beats that share a `line` are sent as one take, and beats marked `skip: true` (cut sentences) are never sent.
+- A `<line>.mp3` in the project root that the script didn't write is a recorded take, and is never replaced unless named in `--regenerate`.
+- Each generation is cached in `.tts-cache/` (git-ignored) under a hash of its text, voice, model, settings and output format, so an unchanged line is never paid for twice.
+- A run refuses to start if it would spend more than `maxCreditsPerRun`.
+
+Then run `scripts/part-voiceover.mjs` as usual to normalise the takes and time their words.

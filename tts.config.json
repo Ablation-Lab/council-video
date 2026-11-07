@@ -1,0 +1,12 @@
+{
+  "voiceId": "Y0JCNRp49WKQ4t7j0A6P",
+  "modelId": "eleven_v3",
+  "outputFormat": "mp3_44100_128",
+  "voiceSettings": {
+    "stability": 0.7,
+    "similarity_boost": 0.69
+  },
+  "seed": null,
+  "maxCreditsPerRun": 3000,
+  "sections": ["src/part1/Section1Opening.tsx"]
+}

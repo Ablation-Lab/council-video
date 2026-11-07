@@ -42,3 +42,6 @@ public/audio/DRAFT.txt
 # Two-part rebuild line takes (same reason as above)
 /p1-*.mp3
 /p2-*.mp3
+
+# ElevenLabs API takes (scripts/tts.mjs): cache, manifest and replaced takes
+/.tts-cache/

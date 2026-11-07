@@ -56,6 +56,8 @@ generic=(
   'ghp_[a-z0-9]{20,}'
   'github_pat_[a-z0-9_]{20,}'
   '(^|[^a-z0-9])sk-[a-z0-9_-]{20,}'
+  '(^|[^a-z0-9])sk_[a-f0-9]{32,}'
+  'xi-api-key["'"'"']?[[:space:]]*[:=][[:space:]]*["'"'"'][a-z0-9_]{20,}'
   'akia[0-9a-z]{16}'
   'BEGIN [a-z ]*PRIVATE KEY'
   '(api[_-]?key|secret[_-]?key|access[_-]?token|password)[[:space:]]*[:=]'
@@ -88,6 +90,13 @@ printf 'canary-7f3a\n' > "$tmp/canary.txt"
   || fail "self-test: scanner did not find a known string"
 (cd "$tmp" && git grep --no-index -q -E -e '(' -- canary.txt) >/dev/null 2>&1
 [ $? -ge 2 ] || fail "self-test: a broken pattern was not reported as an error"
+# Each secret pattern must catch a made-up key of its kind (these samples are not real keys).
+printf '%s\n' 'ELEVEN=sk_0123456789abcdef0123456789abcdef0123456789abcdef' \
+  "headers: {'xi-api-key': 'sk_fedcba9876543210fedcba9876543210fedcba98'}" > "$tmp/keys.txt"
+for p in '(^|[^a-z0-9])sk_[a-f0-9]{32,}' 'xi-api-key["'"'"']?[[:space:]]*[:=][[:space:]]*["'"'"'][a-z0-9_]{20,}'; do
+  (cd "$tmp" && git grep --no-index -q -i -E -e "$p" -- keys.txt) >/dev/null 2>&1 \
+    || fail "self-test: pattern '$p' missed its sample key"
+done
 
 # Files to check, apart from this script.
 if [ "$mode" = staged ]; then
